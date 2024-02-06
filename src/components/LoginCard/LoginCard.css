@@ -33,6 +33,9 @@ form {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   font-family: "Quicksand", sans-serif;
 }
+#email:focus {
+  outline: none;
+}
 
 .forgotText {
   margin: 0.5rem 3.2rem 0 auto;
@@ -55,6 +58,9 @@ form {
   border: none;
   color: #666666;
   width: 100%;
+}
+#password:focus {
+  outline: none;
 }
 
 .showPasswordIcon {
@@ -84,7 +90,7 @@ form {
 .loginButton {
   height: 4rem;
   width: 21.6rem;
-  margin: 4.5rem auto 0 auto;
+  margin: 3.2rem auto 0 auto;
   color: #1F2834;
   background-color: #3FD28B;
   border: none;
