@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "title": "Walk In For Designer Job Role",
+    "dateRange": "10-Jul-2021 to 11-Jul-2021",
+    "locationLabel": "Mumbai",
+    "extraInfoLabel": "",
+    "rolesData": [
+      {
+        "name": "Instructional Designer",
+        "image": "public/resources/Instructional Designer.svg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Walk In for Multiple Job Roles",
+    "dateRange": "03-Jul-2021 to 04-Jul-2021",
+    "locationLabel": "Mumbai",
+    "extraInfoLabel": "Internship Opportunity for MCA Students",
+    "rolesData": [
+      {
+        "name": "Instructional Design",
+        "image": "public/resources/Instructional Designer.svg"
+      },
+      {
+        "name": "Software Engineer",
+        "image": "public/resources/Software Quality Engineer.svg"
+      },
+      {
+        "name": "Software Quality Engineer",
+        "image": "public/resources/Software Quality Engineer.svg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Walk In for Design and Development Job Role",
+    "dateRange": "10-Jul-2021 to 11-Jul-2021",
+    "locationLabel": "Mumbai",
+    "extraInfoLabel": "",
+    "rolesData": [
+      {
+        "name": "Instructional Design",
+        "image": "public/resources/Instructional Designer.svg"
+      },
+      {
+        "name": "Software Engineer",
+        "image": "public/resources/Software Quality Engineer.svg"
+      }
+    ]
+  }
+]

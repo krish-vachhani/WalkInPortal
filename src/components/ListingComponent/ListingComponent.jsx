@@ -1,43 +1,39 @@
-import './ListingComponent.css'
+import './ListingComponent.css';
 
-function ListingComponent() {
-    let roles = [
-        {name: "Software Engineer", image: "public/resources/Software Quality Engineer.svg"},
-        {name: "Instructional Design", image: "public/resources/Instructional Designer.svg"}
-    ];
+function ListingComponent(props) {
+
+    const textContent = props.textData;
 
     return (
         <div className="listing-component">
-            <h2 className="job-title">Walk In For Designer Job Role</h2>
-            <label className="date-time-label">Date & Time :</label>
-            <br/>
+            <h2 className="job-title">{textContent.title}</h2>
+            <div className="div--datetime">
+                <label className="date-time-label">Date & Time :</label>
+            </div>
             <div className="date-time">
-                <label className="date-range">10-Jul-2021 to 11-Jul-2021</label>
+                <label className="date-range">{textContent.dateRange}</label>
                 <div className="verticalDivider"></div>
                 <img src="public/resources/location_on_black_24dp.svg" alt="" className="location-icon"/>
-                <label className="location-label">Mumbai</label>
+                <label className="location-label">{textContent.locationLabel}</label>
             </div>
             <hr className="separator"/>
             <div className="job-roles-container">
                 <label className="job-roles-label">Job Roles :</label>
                 <div className="job-roles-list">
-
-                    {roles.map((role, index) => (
+                    {textContent.rolesData.map((role, index) => (
                         <div key={index} className="job-role">
                             <div className="image-div">
                                 <img src={role.image} alt=""/>
                             </div>
                             <label className="role-name">{role.name}</label>
-                            {(index !== (roles.length - 1)) && <div className="verticalDivider"></div>}
+                            {(index !== (textContent.rolesData.length - 1)) && <div className="verticalDivider"></div>}
                         </div>
-
                     ))}
                 </div>
             </div>
-            <div className="extraInfo-div">
-                <label className="extraInfo-label">Internship Opportunity for MCA Students</label>
-            </div>
-            <br/>
+            {textContent.extraInfoLabel.length > 0 && <div className="extraInfo-div">
+                <label className="extraInfo-label">{textContent.extraInfoLabel}</label>
+            </div>}
             <div className="div--button">
                 <button className="details-button">VIEW MORE DETAILS</button>
             </div>

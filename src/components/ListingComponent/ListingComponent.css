@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Museo+Sans:ital,wght@0,500&display=swap");
 .listing-component {
+  position: relative;
   width: 97.6rem;
-  margin: 3.5rem auto 0 auto;
+  margin: 2.4rem auto 0 auto;
   background-color: #FFFFFF;
   border-radius: 0.3rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2392156863);
   opacity: 1;
+}
+.listing-component:nth-child(1) {
+  margin-top: 3.5rem;
 }
 
 .job-title {
@@ -16,8 +21,11 @@
   font-family: "Quicksand", sans-serif;
 }
 
-.date-time-label {
+.div--datetime {
   margin: 1.6rem auto 0 1.6rem;
+}
+
+.date-time-label {
   font-family: "Quicksand", sans-serif;
   font-size: 1.2rem;
   color: #666666;
@@ -55,7 +63,9 @@
 }
 
 .separator {
-  margin: 1.6rem auto 0 1.6rem;
+  height: 0.1rem;
+  color: rgba(0, 0, 0, 0.12);
+  margin: 1.6rem 1.6rem 0 1.6rem;
 }
 
 .job-roles-container {
@@ -112,14 +122,15 @@
   display: flex;
   justify-content: center;
   padding-bottom: 1.6rem;
+  margin-top: 2.6rem;
 }
 
 .details-button {
   width: 16.8rem;
   height: 2.8rem;
-  background: #3FD28B 0% 0% no-repeat padding-box;
+  background: #3FD28B 0 0 no-repeat padding-box;
   font-family: "Quicksand", sans-serif;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2392156863);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2392156863);
   border-radius: 2px;
   opacity: 1;
   border: none;
