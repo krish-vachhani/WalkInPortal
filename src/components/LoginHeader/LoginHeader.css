@@ -3,6 +3,18 @@
   height: 5.6rem;
   border-bottom: 0.2rem solid #31b9e4;
 }
+.header:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 5.6rem;
+  background-image: url("../../../public/resources/header_pattern.svg");
+  mix-blend-mode: overlay;
+  opacity: 1;
+}
 
 #header-logo {
   margin: 1.05rem 2.4rem;

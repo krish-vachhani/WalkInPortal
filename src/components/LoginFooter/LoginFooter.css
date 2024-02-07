@@ -1,0 +1,33 @@
+.login--footer {
+  display: flex;
+  justify-content: center;
+  min-height: 1.8rem;
+  margin-top: 9rem;
+}
+
+.footer--about {
+  font-size: 1.4rem;
+  color: #1F7A54;
+  margin-right: 0.8rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+.div--verticalLine {
+  height: 1.8rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.1215686275);
+}
+
+.footer--contactus {
+  font-size: 1.4rem;
+  color: #1F7A54;
+  margin-left: 1rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+@media only screen and (max-width: 488px), (max-height: 710px) {
+  .login--footer {
+    margin-top: 5.6rem;
+  }
+}
+
+/*# sourceMappingURL=LoginFooter.css.map */

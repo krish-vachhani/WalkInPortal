@@ -10,7 +10,7 @@ function LoginCard() {
 
                 <div className="mainCard--password">
                     <input type="password" id="password" name="password" placeholder="Password*" required/>
-                    <img className="showPasswordIcon" src="public/resources/icons/preview.svg" alt=""/>
+                    <img src="public/resources/preview.svg" alt=""/>
                 </div>
                 <label className="forgotText">FORGOT PASSWORD?</label>
                 <div className="rememberMe">

@@ -3,7 +3,7 @@ function LoginHeader() {
 
     return (
         <nav className="header">
-            <img id="header-logo" src="../../../public/resources/icons/header_logo.svg" alt=""/>
+            <img id="header-logo" src="../../../public/resources/header_logo.svg" alt=""/>
         </nav>
     )
 }
