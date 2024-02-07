@@ -1,12 +1,19 @@
 import './App.css'
-import Login from "./pages/LoginPage/Login.jsx";
+import Login from "./pages/LoginPage/Login";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import ListingPage from "./pages/ListingPage/ListingPage";
 
 function App() {
 
     return (
-        <div>
-            <Login/>
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/listings" element={<ListingPage/>}/>
+
+            </Routes>
+        </Router>
+
     )
 }
 
