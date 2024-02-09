@@ -5,7 +5,6 @@ import React from "react";
 
 function ListingPage() {
     const [listData, setListData] = React.useState(textDataFull)
-
     return (
         <div className="ListingPageMainDiv">
             {listData.map((textData) => (

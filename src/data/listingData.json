@@ -8,7 +8,17 @@
     "rolesData": [
       {
         "name": "Instructional Designer",
-        "image": "public/resources/Instructional Designer.svg"
+        "image": "../public/resources/Instructional Designer.svg"
+      }
+    ],
+    "timeSlots": [
+      {
+        "id": "timeSlot1",
+        "value": "10:00 AM - 12:00 PM"
+      },
+      {
+        "id": "timeSlot2",
+        "value": "1:00 PM to 3:00 PM"
       }
     ]
   },
@@ -21,15 +31,25 @@
     "rolesData": [
       {
         "name": "Instructional Design",
-        "image": "public/resources/Instructional Designer.svg"
+        "image": "../public/resources/Instructional Designer.svg"
       },
       {
         "name": "Software Engineer",
-        "image": "public/resources/Software Quality Engineer.svg"
+        "image": "../public/resources/Software Quality Engineer.svg"
       },
       {
         "name": "Software Quality Engineer",
-        "image": "public/resources/Software Quality Engineer.svg"
+        "image": "../public/resources/Software Quality Engineer.svg"
+      }
+    ],
+    "timeSlots": [
+      {
+        "id": "timeSlot1",
+        "value": "10:00 AM - 12:00 PM"
+      },
+      {
+        "id": "timeSlot2",
+        "value": "1:00 PM to 3:00 PM"
       }
     ]
   },
@@ -42,11 +62,21 @@
     "rolesData": [
       {
         "name": "Instructional Design",
-        "image": "public/resources/Instructional Designer.svg"
+        "image": "../public/resources/Instructional Designer.svg"
       },
       {
         "name": "Software Engineer",
-        "image": "public/resources/Software Quality Engineer.svg"
+        "image": "../public/resources/Software Quality Engineer.svg"
+      }
+    ],
+    "timeSlots": [
+      {
+        "id": "timeSlot1",
+        "value": "10:00 AM - 12:00 PM"
+      },
+      {
+        "id": "timeSlot2",
+        "value": "1:00 PM to 3:00 PM"
       }
     ]
   }

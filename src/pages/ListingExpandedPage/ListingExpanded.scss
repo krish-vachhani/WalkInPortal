@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Museo+Sans:ital,wght@0,500&display=swap');
+
+.listingExpanded-component {
+  position: relative;
+  width: 97.6rem;
+  height: 24.5rem;
+  margin: 2.6rem auto 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 0.3rem;
+  box-shadow: 0 4px 6px #0000003D;
+  opacity: 1;
+
+  &:nth-child(1) {
+    margin-top: 3.5rem;
+  }
+}
+
+.listingExpanded-job-title {
+  padding-top: 1.6rem;
+  margin: 0 auto 0 1.6rem;
+  color: #222222;
+  font-size: 1.8rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+.listingExpanded-div--datetime {
+  margin: 1.6rem auto 0 1.6rem;
+}
+
+.listingExpanded-date-time-label {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+.listingExpanded-date-time {
+  display: flex;
+  align-items: center;
+  margin: 0.8rem auto 0 1.6rem;
+}
+
+.listingExpanded-date-range {
+  height: 1.8rem;
+  font-family: "Quicksand", sans-serif;
+  margin-right: 1.6rem;
+  font-size: 1.4rem;
+  color: #222222;
+}
+
+.listingExpanded-verticalDivider {
+  height: 1.205rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  margin-right: 1.933rem;
+}
+
+.listingExpanded-location-icon {
+  height: 1.333rem;
+  margin-right: 0.733rem;
+}
+
+.listingExpanded-location-label {
+  font-family: "Quicksand", sans-serif;
+  color: #666666;
+  font-size: 1.2rem
+}
+
+.listingExpanded-separator {
+  height: 0.1rem;
+  color: rgba(0, 0, 0, 0.12);
+  margin: 1.6rem 1.6rem 0 1.6rem;
+}
+
+.listingExpanded-job-roles-container {
+  margin: 1.6rem auto 0 1.6rem;
+}
+
+.listingExpanded-job-roles-label {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+.listingExpanded-job-roles-list {
+  display: flex;
+  margin: 0.8rem auto 0 0;
+}
+
+.listingExpanded-job-role {
+  display: flex;
+  align-items: center;
+}
+
+.listingExpanded-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.4rem;
+  width: 2.4rem;
+  border: 1px solid #222222;
+  border-radius: 50%;
+  margin-right: 0.8rem;
+}
+
+.listingExpanded-role-name {
+  font-family: "Quicksand", sans-serif;
+  margin-right: 0.8rem;
+  color: #1F7A54;
+  font-size: 1.4rem;
+}
+
+.listingExpanded-basicInfoDropdownDiv {
+  display: flex;
+  background-color: #DBEFFF;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  margin-top: 2.7rem;
+
+}
+
+.listingExpanded-basicInfoDropdownDiv-label {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+  margin: 1rem auto 1rem 1.6rem;
+}
+
+.listingExpanded-basicInfoDropdownDiv-separatorAndImg {
+  display: flex;
+  align-items: center;
+}
+
+.listingExpanded-basicInfoDropdownDiv-separator {
+  height: 4rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.listingExpanded-basicInfoDropdownDiv-img {
+  margin: 0.8rem 1rem 0.8rem 1.027rem;
+}
+
+.listingExpanded-component-basicInfoExpanded {
+  width: 97.6rem;
+  padding-bottom: 1.6rem;
+  margin: 0 auto 0 auto;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 4px 6px #0000003D;
+  opacity: 1;
+}
+
+.listingExpanded-component-basicInfoExpanded-generalInstructions-div {
+  padding: 1.6rem 1.6rem 0 1.6rem;
+}
+
+.listingExpanded-generalInstructions-label {
+  color: #666666;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+}
+
+.listingExpanded-generalInstructions-paragraph {
+  margin-top: 1.6rem;
+  color: #222222;
+  font-size: 1.4rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+.listingExpanded-timeslot-preferences {
+  width: 97.6rem;
+  margin: 2.4rem auto 0 auto;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 4px 6px #0000003D;
+  opacity: 1;
+}
+
+.listingExpanded-timeslot-preferences--labelContainer {
+  padding: 1.6rem 0 0 1.6rem;
+}
+
+.listingExpanded-timeslot-preferences-mainLabel {
+  color: #222222;
+  font-size: 1.6rem;
+  font-family: "Quicksand", sans-serif;
+
+}
+
+.listingExpanded-timeslot-choice-container {
+  margin: 2.4rem auto 0 1.6rem;
+}
+
+.listingExpanded-timeslot-choice-container-label {
+  font-size: 1.2rem;
+  color: #666666;
+  font-family: "Quicksand", sans-serif;
+}
+
+.listingExpanded-radio-buttons {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > div {
+    margin-top: 1.6rem;
+    display: flex;
+    margin-right: 0.8rem;
+
+    > input[type="radio"] {
+
+      width: 2rem;
+      height: 2.4rem;
+      accent-color: #1F7A54;
+      margin-right: 0.8rem;
+    }
+
+    > label {
+      color: #222222;
+      font-size: 1.6rem;
+      font-family: "Quicksand", sans-serif;
+    }
+  }
+}
+
+.listingExpanded-roles-choice-container {
+  margin: 2.4rem auto 0 1.6rem;
+}
+
+.listingExpanded-roles-choice-container-label {
+  font-size: 1.2rem;
+  color: #666666;
+  font-family: "Quicksand", sans-serif;
+}
+
+.listingExpanded-checkboxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > div {
+    margin-top: 1.6rem;
+    display: flex;
+    margin-right: 0.8rem;
+
+    > input[type="checkbox"] {
+
+      width: 1.8rem;
+      height: 2.4rem;
+      accent-color: #1F7A54;
+      margin-right: 0.8rem;
+    }
+
+    > label {
+      color: #222222;
+      font-size: 1.6rem;
+      font-family: "Quicksand", sans-serif;
+    }
+  }
+}
+
+.upload-resume-div {
+  display: flex;
+  align-items: center;
+  margin-top: 1.6rem;
+  margin-left: 1.6rem;
+  padding-bottom: 1.6rem;
+}
+
+.upload-resume-div-img {
+  width: 1.4rem;
+  height: 2.4rem;
+  margin-right: 0.8rem;
+}
+
+.upload-resume-div-label {
+  color: #1F7A54;
+  font-size: 1.4rem;
+  font-family: "Quicksand", sans-serif;
+}

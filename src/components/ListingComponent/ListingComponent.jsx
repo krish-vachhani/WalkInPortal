@@ -23,6 +23,7 @@ function ListingComponent(props) {
                     {textContent.rolesData.map((role, index) => (
                         <div key={index} className="job-role">
                             <div className="image-div">
+                                {console.log(role.image)}
                                 <img src={role.image} alt=""/>
                             </div>
                             <label className="role-name">{role.name}</label>
