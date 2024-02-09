@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+.success-tick-img {
+  width: 5.359rem;
+  height: 4.941rem;
+}
+
+.success-mainDiv {
+  width: 97.6rem;
+  margin: 7.6rem auto 0 auto;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2392156863);
+  opacity: 1;
+}
+
+.success-title-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.8rem;
+}
+
+.success-title-label {
+  color: #222222;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.8rem;
+}
+
+.success-tick-circle-div {
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.559rem 2.306rem 2.4rem 2.335rem;
+  border-radius: 50%;
+  background: #18BE2E 0 0 no-repeat padding-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1607843137);
+  opacity: 1;
+  margin: 0 auto 0 auto;
+  transform: translateY(-50%);
+}
+
+.success-separator {
+  height: 0.1rem;
+  width: 94.4rem;
+  margin: 1.6rem auto 0 auto;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.success-dateTimeDiv {
+  width: 13.8rem;
+  margin: 1.6rem auto 0 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.success-dateTime-title {
+  color: #666666;
+  font-size: 1.2rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+.success-dateAndTime-label {
+  color: #222222;
+  font-size: 1.4rem;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 0.8rem;
+}
+
+.success-venue {
+  width: 94.4rem;
+  margin: 1.6rem auto 0 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.success-downloadHallTicket-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+.success-downloadHallTicket-button {
+  padding: 0.5rem 1.594rem 0.5rem 1.606rem;
+  background: #3FD28B 0 0 no-repeat padding-box;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2392156863);
+  opacity: 1;
+}
+
+/*# sourceMappingURL=SuccessPage.css.map */

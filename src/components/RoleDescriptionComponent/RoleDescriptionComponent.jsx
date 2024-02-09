@@ -6,7 +6,6 @@ import React from "react";
 function RoleDescriptionComponent(props) {
     const id = props.id
     const role = props.role
-    console.log(role)
     const roleDescription = roleData[role].roleDescription
     const requirements = roleData[role].requirements
     const salary = roleData[role].salary
