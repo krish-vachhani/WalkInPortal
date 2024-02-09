@@ -1,0 +1,63 @@
+
+.listingExpanded-role-basicInfoDropdownDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5.6rem;
+  margin-top: 2.4rem;
+  background: #DBEFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 4px 6px #00000029;
+  opacity: 1;
+}
+
+.listingExpanded-role-basicInfoDropdownDiv-label {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+  margin: 1rem auto 1rem 1.6rem;
+}
+
+.listingExpanded-role-basicInfoDropdownDiv-separatorAndImg {
+  display: flex;
+  align-items: center;
+}
+
+.listingExpanded-role-basicInfoDropdownDiv-separator {
+  height: 5.6rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.listingExpanded-role-basicInfoDropdownDiv-img {
+  margin: 0.8rem 1rem 0.8rem 1.027rem;
+}
+
+.listingExpanded-role-component-basicInfoExpanded {
+  width: 97.6rem;
+  padding-bottom: 1.6rem;
+  margin: 0 auto 0 auto;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: 0 4px 6px #0000003D;
+  opacity: 1;
+}
+
+.listingExpanded-role-separator {
+  height: 0.1rem;
+  color: rgba(0, 0, 0, 0.12);
+  margin: 1.6rem 1.6rem 0 1.6rem;
+}
+
+.listingExpanded-role-component-basicInfoExpanded-generalInstructions-div {
+  padding: 1.6rem 1.6rem 0 1.6rem;
+}
+
+.listingExpanded-role-generalInstructions-label {
+  color: #666666;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+}
+
+.listingExpanded-role-generalInstructions-paragraph {
+  margin-top: 1.6rem;
+  color: #222222;
+  font-size: 1.4rem;
+  font-family: "Quicksand", sans-serif;
+}

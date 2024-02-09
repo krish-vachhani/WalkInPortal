@@ -1,7 +1,10 @@
 import './ListingExpanded.css';
 import {useParams} from "react-router-dom";
 import textDataFull from "../../data/listingData.json";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import React from "react";
+import RoleDescriptionComponent from "../../components/RoleDescriptionComponent/RoleDescriptionComponent.jsx";
 
 function ListingExpanded() {
     const {id} = useParams();
@@ -16,7 +19,10 @@ function ListingExpanded() {
     }
     return (
         <div className="listingExpanded-component">
-            <h2 className="listingExpanded-job-title">{textContent.title}</h2>
+            <div className="title-div">
+                <h2 className="listingExpanded-job-title">{textContent.title}</h2>
+                <button className="apply-button">Apply</button>
+            </div>
             <div className="listingExpanded-div--datetime">
                 <label className="listingExpanded-date-time-label">Date & Time :</label>
             </div>
@@ -170,6 +176,11 @@ function ListingExpanded() {
                     <img src="/public/resources/Upload_black_24dp.svg" alt="" className="upload-resume-div-img"/>
                     <label className="upload-resume-div-label">Upload Updated Resume</label>
                 </div>
+            </div>
+            <div className="RoleDescriptionComponent--div">
+                {textContent.rolesData.map((role, index) => {
+                    return <RoleDescriptionComponent key={index} role={role.name}/>
+                })}
             </div>
         </div>
     )
