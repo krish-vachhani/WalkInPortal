@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Museo+Sans:ital,wght@0,500&display=swap");
+
+.PersonalInfoComponent-mainComponent {
+  background-color: #FFFFFF;
+  width: 97.6rem;
+  height: 87.3rem;
+  border-radius: 0.2rem;
+  margin: 2.4rem auto 0 auto;
+}
+
+.PersonalInfoComponent-firstNameAndInput-div {
+  display: flex;
+  justify-content: space-between;
+  //width: 48rem;
+  height: 5.1rem;
+  padding: 2.4rem 0 0 2.4rem;
+
+}
+
+.PersonalInfoComponent-firstName {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+}
+
+.PersonalInfoComponent-bigInput {
+  width: 48rem;
+  height: 2.5rem;
+  color: #222222;
+  margin: 1.2rem auto 0 auto;
+  border: none;
+  font-size: 1.6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  font-family: "Quicksand", sans-serif;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.PersonalInfoComponent-uploadProfile-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15rem;
+  height: 18.617rem;
+  margin-right: 2.4rem;
+
+}
+
+.PersonalInfoComponent-profilePic-img {
+  width: 11.2rem;
+  height: 13.4rem;
+}
+
+.PersonalInfoComponent-uploadProfile-text {
+  font-family: "Quicksand", sans-serif;
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
+  color: #1F7A54;
+}
+
+.PersonalInfoComponent-uploadProfile-maxSizeText {
+  font-size: 1rem;
+  color: #757575;
+  margin-top: 0.817rem;
+}
+
+.PersonalInfoComponent-lastNameAndInput-div {
+  width: 48rem;
+  height: 5.1rem;
+  padding: 2.4rem 0 0 2.4rem;
+  margin-top: 4rem;
+}
+
+.PersonalInfoComponent-lastName {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+}
+
+.PersonalInfoComponent-number-div {
+  display: flex;
+  align-items: center;
+}
+
+.PersonalInfoComponent-number-plus {
+  color: #222222;
+  font-size: 1.6rem;
+  font-family: "Quicksand", sans-serif;
+  width: 0.9rem;
+  height: 2rem;
+}
+.countryCodeInput{
+  width: 2.2rem;
+  height: 2.5rem;
+  color: #222222;
+  margin: 0 0 0 0.4rem;
+  border: none;
+  font-size: 1.6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  font-family: "Quicksand", sans-serif;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.phoneNumberInput{
+  margin-left: 0.4rem;
+  width: 8.7rem;
+  height: 2.5rem;
+  color: #222222;
+  border: none;
+  font-size: 1.6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  font-family: "Quicksand", sans-serif;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.PersonalInfoComponent-upload-resume-div {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.PersonalInfoComponent-upload-resume-div-img {
+  width: 1.4rem;
+  height: 2.4rem;
+  margin-right: 0.8rem;
+}
+
+.PersonalInfoComponent-upload-resume-div-label {
+  color: #1F7A54;
+  font-size: 1.4rem;
+  font-family: "Quicksand", sans-serif;
+}
+
+.PersonalInfoComponent-portfolio-div{
+  width: 48rem;
+  height: 5.1rem;
+  margin-top: 4.3rem;
+}
+
+.PersonalInfoComponent-roles-choice-container {
+  margin: 4rem auto 0 0;
+}
+
+.PersonalInfoComponent-roles-choice-container-label {
+  font-size: 1.2rem;
+  color: #666666;
+  font-family: "Quicksand", sans-serif;
+}
+
+.PersonalInfoComponent-checkboxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > div {
+    margin-top: 1.6rem;
+    display: flex;
+    margin-right: 0.8rem;
+
+    > input[type="checkbox"] {
+
+      width: 1.8rem;
+      height: 2.4rem;
+      accent-color: #1F7A54;
+      margin-right: 0.8rem;
+    }
+
+    > label {
+      color: #222222;
+      font-size: 1.6rem;
+      font-family: "Quicksand", sans-serif;
+    }
+  }
+}
+
+.PersonalInfoComponent-updateCheckbox{
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  padding-bottom: 2.4rem;
+  > input[type="checkbox"] {
+
+    width: 1.8rem;
+    height: 2.4rem;
+    accent-color: #1F7A54;
+  }
+  > label {
+    color: #222222;
+    font-size: 1.4rem;
+    font-family: "Quicksand", sans-serif;
+    margin-left: 0.8rem;
+  }
+}
