@@ -1,0 +1,172 @@
+.component {
+  padding: 0 2.4rem 2.4rem 2.4rem;
+}
+
+.form {
+  background-color: white;
+  border-radius: 3.2px;
+  .basicDetails {
+    padding: 2.4rem;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    .nameDetails {
+      width: 70%;
+      .inp {
+        width: 100%;
+        margin-bottom: 4rem;
+        p {
+          font-size: 1.2rem;
+          color: #666666;
+        }
+        input {
+          width: 80%;
+          margin-top: 1.28rem;
+          border: none;
+          outline: none;
+          font-size: 1.6rem;
+          border-bottom: 1px solid #666666;
+          font-weight: 600;
+        }
+      }
+      .PhoneNumber {
+        width: 100%;
+        margin-bottom: 4rem;
+        p {
+          font-size: 1.2rem;
+          color: #666666;
+        }
+        .number {
+          margin-top: 1.28rem;
+          display: flex;
+          p {
+            font-size: 1.6rem;
+            color: black;
+            font-weight: 600;
+            text-align: center;
+          }
+          input {
+            text-align: center;
+            font-size: 1.6rem;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #666666;
+            font-weight: 600;
+            width: 8.8rem;
+          }
+          input:nth-child(2) {
+            margin-left: 0.8rem;
+            width: 1.76rem;
+          }
+        }
+      }
+      .resumeUpload {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 4rem;
+        // cursor: pointer;
+        .custom{
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          color: #1f7a54;
+          font-weight: 600;
+          font-size: 1.36rem;
+          .image {
+            img {
+              height: 2.72rem;
+              width: 3.68rem;
+            }
+          }
+        }
+        p{
+          font-size: 1.6rem;
+          margin-left: 0.8rem;
+          font-weight: 600;
+        }
+      }
+      .pref {
+        margin-bottom: 4rem;
+        p {
+          font-size: 1.2rem;
+          color: #666666;
+          margin-bottom: 1.6rem;
+        }
+        .checkInp {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1.6rem;
+          font-weight: 600;
+          font-size: 1.6rem;
+          input {
+            cursor: pointer;
+            accent-color: #1f7a54;
+            height: 1.6rem;
+            width: 1.6rem;
+          }
+        }
+      }
+      .checkBox {
+        font-size: 1.36rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        input {
+          cursor: pointer;
+          height: 1.6rem;
+          width: 1.6rem;
+          accent-color: #1f7a54;
+        }
+      }
+    }
+  }
+  .imageDetails {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .personalImg {
+      img {
+        border-radius: 80%;
+        height: 12.8rem;
+        width: 12.8rem;
+      }
+    }
+    button {
+      color: #1f7a54;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      font-weight: 600;
+      font-size: 1.28rem;
+      cursor: pointer;
+    }
+    p {
+      margin-top: 0.8rem;
+      font-size: 1.12rem;
+      color: #757575;
+    }
+  }
+}
+.nextBtn {
+  margin-bottom: 2.4rem;
+  width: 100%;
+  text-align: center;
+  button {
+    height: 3.2rem;
+    width: 11.2rem;
+    font-size: 1.44rem;
+    outline: none;
+    border: none;
+    background-color: #3fd28b;
+    border-radius: 3.2px;
+    box-shadow: 0px 4.8px 8px #0000003D;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
+
+input[type="file"] {
+  display: none;
+}

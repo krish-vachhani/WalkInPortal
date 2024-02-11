@@ -1,0 +1,370 @@
+.registerNavbar .navbarItems{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #3C4E62;
+  padding: 0 2.4rem 0 2.4rem;
+  height: 4.8rem;
+  .backImg{
+    display: flex;
+    align-items: center;
+    img{
+      cursor: pointer;
+      height: 2.4rem;
+      width: 2.4rem;
+      filter: brightness(2);
+    }
+  }
+  .title{
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.76rem;
+    font-weight: lighter;
+  }
+  .btns{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    button{
+      padding: 0.56rem 2.08rem 0.56rem 2.08rem;
+      margin-left: 1.6rem;
+      background-color: #3FD28B;
+      border-radius: 3.2px;
+      font-size: 1.44rem;
+      border: none;
+      box-shadow: 0px 4.8px 8px #0000003D;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
+
+.container {
+  padding: 2.4rem;
+}
+.standUpDetails {
+  background-color: white;
+  border-radius: 3.2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  height: 2.88rem;
+  hr {
+    width: 44.8%;
+    border: 0.288vh solid #eeeeee;
+  }
+
+  .detailsOverview {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 0.16rem;
+      margin-right: 0.8rem;
+      background-color: #3fd28b;
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      font-weight: 600;
+      img{
+        height: 1.6rem;
+        width: 1.6rem;
+      }
+    }
+    p {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+  .qualifications{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 0.16rem;
+      margin-right: 0.8rem;
+      background-color: #3fd28b;
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      font-weight: 600;
+      img{
+        height: 1.6rem;
+        width: 1.6rem;
+      }
+    }
+    p {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.section{
+  padding: 0 2.4rem 0 2.4rem;
+}
+
+.personalInfoTitle, .qualificationsInfoTitle{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  .editDiv{
+    display: flex;
+    align-items: center;
+    color: #1F7A54;
+    cursor: pointer;
+    img{
+      height: 1.76rem;
+      width: 1.76rem;
+      padding-right: 0.64rem;
+    }
+  }
+}
+
+.personalInfo{
+  background-color: #FFFFFF;
+  border-radius: 3.2px;
+  padding: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  position: relative;
+  .nameDetails {
+    .inp {
+      margin-bottom: 4rem;
+      p {
+        font-size: 1.2rem;
+        color: #666666;
+      }
+      .personalDetail {
+        margin-top: 1.28rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+    .PhoneNumber {
+      margin-bottom: 4rem;
+      > p {
+        font-size: 1.2rem;
+        color: #666666;
+      }
+      .number {
+        margin-top: 1.28rem;
+        display: flex;
+        font-weight: 600;
+        p {
+          margin-right: 0.32rem;
+        }
+        .personalDetail{
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .resumeUpload {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4rem;
+      cursor: pointer;
+      .image {
+        img {
+          height: 2.72rem;
+          width: 3.68rem;
+        }
+      }
+      button {
+        color: #222222;
+        background-color: white;
+        outline: none;
+        border: none;
+        font-weight: 600;
+        margin-left: 0.32rem;
+        font-size: 1.36rem;
+      }
+      .resumeDetail{
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-left: 0.96rem;
+      }
+    }
+    .pref {
+      margin-bottom: 4rem;
+      p {
+        font-size: 1.2rem;
+        color: #666666;
+      }
+      .preferredJobRoleDetail{
+        margin-top: 1.28rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+    .checkBox {
+      font-size: 1.36rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      input {
+        height: 1.6rem;
+        width: 1.6rem;
+        accent-color: black;
+        margin-right: 0.64rem;
+      }
+    }
+  }
+}
+.imageDetails {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+
+  .personalImg {
+    img {
+      border-radius: 50%;
+      height: 12.8rem;
+      width: 12.8rem;
+    }
+  }
+}
+
+.qualificationsInfo{
+  .eduTitle , .profTitle{
+    height: 5.6rem;
+    display: flex;
+    align-items: center;
+    background-color: #DBEFFF;
+    font-size: 1.6rem;
+    padding:0 2.4rem 0 2.4rem;
+    box-shadow: 0px 4px 6px #00000029;
+  }
+  .eduQualification, .profQualification ,.profQualificationExp{
+    background-color: #FFFFFF;
+    border-radius: 3.2px;
+    margin-bottom: 2.4rem;
+    padding: 2.4rem ;
+    .inp {
+      margin-bottom: 4rem;
+      p {
+        font-size: 1.2rem;
+        color: #666666;
+      }
+      .eduQualificationDetail, .profQualificationDetail{
+        margin-top: 1.28rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+    .inpLast {
+      p {
+        font-size: 1.2rem;
+        color: #666666;
+      }
+      .eduQualificationDetail, .profQualificationDetail {
+        margin-top: 1.28rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+    .eduDetail{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .gridDiv{
+        margin-bottom: 4rem;
+        p {
+          font-size: 1.2rem;
+          color: #666666;
+        }
+        .eduInfo {
+          margin-top: 1.28rem;
+          font-size: 1.6rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.qualificationsInfo .profQualificationExp{
+  .expertiseTechnology , .familiarTechnology{
+    margin-bottom: 4rem;
+    .technologyTitle {
+      font-size: 1.2rem;
+      color: #666666;
+    }
+    .other{
+      font-size: 1.2rem;
+      color: #666666;
+      margin-top: 1.28rem;
+    }
+    .technology {
+      margin-top: 1.12rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+
+  .noticePeriodDiv .isNoticePeriod, .testDetail .isTest{
+    margin-bottom: 1.76rem;
+    p {
+      font-size: 1.2rem;
+      color: #666666;
+    }
+    .profQualificationDetail {
+      margin-top: 1.28rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+  .noticePeriod{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .noticePeriodInfo{
+      margin-bottom: 4rem;
+      p {
+        font-size: 1.2rem;
+        color: #666666;
+      }
+      .profQualificationDetail {
+        margin-top: 1.28rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.prevBtn {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+.previous {
+  background-color: #3FD28B;
+  border-radius: 3.2px;
+  box-shadow: 0px 4.8px 8px #0000003D;
+  height: 3.2rem;
+  width: 11.2rem;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+
+@media (min-width:1000px) and (max-width:1300px){
+  .standUpDetails hr{
+    width: 32%;
+  }
+}

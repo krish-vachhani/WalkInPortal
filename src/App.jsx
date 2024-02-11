@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ListingPage from "./pages/ListingPage/ListingPage";
 import ListingExpanded from "./pages/ListingExpandedPage/ListingExpanded.jsx";
 import SuccessPage from "./pages/SuccessPage/SuccessPage.jsx";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.jsx";
+import Register from "./pages/RegisterPage/Register.jsx";
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
                 <Route path="/listings" element={<ListingPage/>}/>
                 <Route path="/listings/:id" element={<ListingExpanded/>}/>
                 <Route path="/listings/:id/success" element={<SuccessPage/>}/>
-                <Route path="/register" element={<RegistrationPage/>}/>
+                <Route path="/register" element={<Register/>}/>
             </Routes>
         </Router>
 
