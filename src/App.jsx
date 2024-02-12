@@ -8,8 +8,7 @@ import Register from "./pages/RegisterPage/Register.jsx";
 
 function App() {
 
-    return (
-        <Router>
+    return (<Router>
             <Routes>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/listings" element={<ListingPage/>}/>

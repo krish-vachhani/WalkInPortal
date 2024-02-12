@@ -5,6 +5,7 @@ import "./LoginCard.css";
 import {useNavigate} from "react-router-dom";
 
 function LoginCard() {
+        const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -18,9 +19,9 @@ function LoginCard() {
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
             console.log("Form submitted with values:", values);
+            navigate('/listings')
         },
     });
-    const navigate = useNavigate();
     return (
         <div className="mainCard">
             <h1>Log In</h1>

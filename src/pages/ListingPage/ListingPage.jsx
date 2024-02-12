@@ -3,6 +3,7 @@ import './ListingPage.css';
 import textDataFull from "../../data/listingData.json";
 import React from "react";
 import MainHeader from "../../components/MainHeaderComponent/MainHeader.jsx";
+import {useNavigate} from "react-router-dom";
 
 function ListingPage() {
     const [listData, setListData] = React.useState(textDataFull)
@@ -10,7 +11,7 @@ function ListingPage() {
             <MainHeader/>
 
             <div className="ListingPageMainDiv">
-                {listData.map((textData) => (<ListingComponent key={textData.id} textData={textData}/>))}
+                {listData.map((textData) => (<ListingComponent key={textData.id} id = {textData.id} textData={textData}/>))}
             </div>
         </div>);
 }

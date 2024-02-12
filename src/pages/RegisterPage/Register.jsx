@@ -3,11 +3,67 @@ import style from "/src/pages/RegisterPage/register.module.css";
 import Personaldetail from "../../components/PersonalDetailComponent/Personaldetail.jsx";
 import Qualification from "../../components/QualificationComponent/Qualification.jsx";
 import Review from "../../components/ReviewComponent/Review.jsx";
-import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import {useParams, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import * as Yup from "yup";
+import MainHeader from "../../components/MainHeaderComponent/MainHeader.jsx";
+
+const personalDetailSchema = Yup.object().shape({
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    phoneCode: Yup.string().required("Phone Code is required"),
+    phoneNumber: Yup.string().required("Phone Number is required"),
+    portfoliourl: Yup.string().url("Invalid URL"),
+    referralName: Yup.string(),
+    jobRoleRes: Yup.array().min(1, "Select at least one job role"),
+});
+
+const qualificationDetailSchema = Yup.object().shape({
+    percentage: Yup.string().required("Percentage is required"),
+    location: Yup.string().required("Loaction is required"),
+    otherCollege: Yup.string(),
+    isAppearedTest: Yup.string().required("Test Appeared is required"),
+    expertOther: Yup.string(),
+    familiarOther: Yup.string(),
+    applyRole: Yup.string(),
+    applicant: Yup.string().required("Applicant Type is required"),
+
+    yearOfExp: Yup.string().when("applicant", {
+        is: "experienced",
+        then: (schema) => schema.required("Year Of experience is required"),
+        otherwise: (schema) => schema,
+    }),
+    currentCTC: Yup.string().when("applicant", {
+        is: "experienced",
+        then: (schema) => schema.required("Current CTC is required"),
+        otherwise: (schema) => schema,
+    }),
+    expCTC: Yup.string().when("applicant", {
+        is: "experienced",
+        then: (schema) => schema.required("Expected CTC is required"),
+        otherwise: (schema) => schema,
+    }),
+
+    curNoticePeriod: Yup.string().when("applicant", {
+        is: "experienced",
+        then: (schema) => schema.required("Cureent Notice Period is required"),
+        otherwise: (schema) => schema,
+    }),
+    endNoticePeriod: Yup.string().when("curNoticePeriod", {
+        is: "Yes",
+        then: (schema) => schema.required("End Notice Period is required"),
+        otherwise: (schema) => schema,
+    }),
+    expertTechnology: Yup.array().when("applicant", {
+        is: "experienced",
+        then: (schema) => schema.min(1, "Select at least one Technology"),
+        otherwise: (schema) => schema,
+    }),
+});
 
 export default function Register() {
-    const { id } = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
 
     const goJobOpening = () => {
@@ -56,64 +112,46 @@ export default function Register() {
     const goQualification = (event) => {
         event.preventDefault();
         if (page === 0) {
-            if (
-                !formData.firstName ||
-                !formData.lastName ||
-                !formData.phoneCode ||
-                !formData.phoneNumber ||
-                !formData.email ||
-                !formData.jobRoleRes.length
-            )
-                alert("Please Fill Mandatory Details");
-            else {
-                setPage((currPage) => currPage + 1);
-            }
+            personalDetailSchema
+                .validate(formData, {abortEarly: false})
+                .then(() => {
+                    alert(JSON.stringify(formData, null, 2));
+                    setPage((currPage) => currPage + 1);
+                })
+                .catch((validationErrors) => {
+                    alert("Please Fill Properly or Mandatory Details");
+                });
         } else if (page === 1) {
-            const exp =
-                formData.applicant === "experienced"
-                    ? formData.yearOfExp &&
-                    formData.expertTechnology.length &&
-                    formData.currentCTC &&
-                    formData.expCTC &&
-                    formData.curNoticePeriod &&
-                    (formData.curNoticePeriod === "Yes" ? formData.endNoticePeriod : true)
-                    : true;
-            if (
-                !formData.percentage ||
-                !formData.yearOfPassing ||
-                !formData.college ||
-                !formData.stream ||
-                !formData.qualification ||
-                !formData.location ||
-                !formData.applicant ||
-                !exp ||
-                !formData.isAppearedTest ||
-                (formData.isAppearedTest==="Yes" ? !formData.applyRole : false)
-            )
-                alert("Please Fill Mandatory Details");
-            else {
-                setPage((currPage) => currPage + 1);
-            }
+            qualificationDetailSchema
+                .validate(formData, {abortEarly: false})
+                .then(() => {
+                    alert(JSON.stringify(formData, null, 2));
+                    setPage((currPage) => currPage + 1);
+                })
+                .catch((validationErrors) => {
+                    alert("Please Fill Properly or Mandatory Details");
+                });
         }
     };
 
     const PageDisplay = () => {
         if (page === 0) {
-            return <Personaldetail formData={formData} setformData={setformData} />;
+            return <Personaldetail formData={formData} setformData={setformData}/>;
         } else if (page === 1) {
-            return <Qualification formData={formData} setformData={setformData} />;
+            return <Qualification formData={formData} setformData={setformData}/>;
         } else {
-            return <Review formData={formData} setformData={setformData} />;
+            return <Review formData={formData} setformData={setformData}/>;
         }
     };
 
     return (
-        <body className={style.mainDiv}>
+        <>
+            <MainHeader/>
 
             <div className={style.registerNavbar}>
                 <div className={style.navbarItems}>
                     <div className={style.backImg}>
-                        <img src={arrow} alt="" />
+                        <img src={arrow} alt=""/>
                     </div>
                     <div className={style.title}>
                         <p>Create An Account</p>
@@ -145,7 +183,7 @@ export default function Register() {
                         )}
                         <p>Personal Information</p>
                     </div>
-                    <hr />
+                    <hr/>
                     <div className={style.qualifications}>
                         {page === 1 ? (
                             <div className={style.number}>2</div>
@@ -159,21 +197,21 @@ export default function Register() {
                         ) : (
                             <div
                                 className={style.number}
-                                style={{ backgroundColor: "#757575", color: "white" }}
+                                style={{backgroundColor: "#757575", color: "white"}}
                             >
                                 2
                             </div>
                         )}
                         <p>Qualification</p>
                     </div>
-                    <hr />
+                    <hr/>
                     <div className={style.detailsOverview}>
                         {page === 2 ? (
                             <div className={style.number}>3</div>
                         ) : (
                             <div
                                 className={style.number}
-                                style={{ backgroundColor: "#757575", color: "white" }}
+                                style={{backgroundColor: "#757575", color: "white"}}
                             >
                                 3
                             </div>
@@ -190,7 +228,7 @@ export default function Register() {
                         onClick={() => {
                             setPage((currPage) => currPage - 1);
                         }}
-                        style={{ marginRight: "1rem" }}
+                        style={{marginRight: "1rem"}}
                     >
                         Previous
                     </button>
@@ -206,6 +244,6 @@ export default function Register() {
                     ""
                 )}
             </div>
-        </body>
+        </>
     );
 }

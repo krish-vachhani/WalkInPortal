@@ -1,7 +1,9 @@
 import './ListingComponent.css';
+import {useNavigate} from "react-router-dom";
 
 function ListingComponent(props) {
 
+    const navigate = useNavigate();
     const textContent = props.textData;
 
     return (
@@ -35,7 +37,9 @@ function ListingComponent(props) {
             {textContent.extraInfoLabel.length > 0 && <div className="extraInfo-div">
                 <label className="extraInfo-label">{textContent.extraInfoLabel}</label>
             </div>}
-            <div className="div--button">
+            <div className="div--button" onClick={()=>{
+                navigate("/listings/" + props.id);
+            }}>
                 <button className="details-button">VIEW MORE DETAILS</button>
             </div>
         </div>
