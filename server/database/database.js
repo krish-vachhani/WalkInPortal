@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
     host: `localhost`,
     user: `root`,
     password: `krish303`,
-    database: `ZeusSchema`,
+    database: `walk-in-portal`,
 });
 
 connection.connect();

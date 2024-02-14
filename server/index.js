@@ -31,17 +31,17 @@ app.post('/login', (req, res) => {
     try {
         const {email, password} = req.body;
         const queryparams = [email];
-        const query = "SELECT * FROM User_Account WHERE User_Email = ?";
+        const query = "SELECT * FROM tbl_personal_info WHERE email_addr = ?";
         console.log('SQL Query:', query);
         connection.query(query, queryparams, (err, result) => {
             if (err) {
                 console.error("Error occurred:", err);
                 return res.sendStatus(403);
             }
-            if (result[0] != null && result[0].Hashed_Password === password) {
-                const token = jwt.sign({email, userId: result[0].UserId}, SECRET, {expiresIn: '1h'});
+            if (result[0] != null && result[0].password === password) {
+                const token = jwt.sign({email, userId: result[0].id}, SECRET, {expiresIn: '1h'});
                 const user = {
-                    id: result[0].UserId,
+                    id: result[0].id,
                     token
                 }
                 res.status(200).send(user);
@@ -56,7 +56,7 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/test',authenticateJwt ,(req, res) => {
-    let sql = 'select * from User_Account';
+    let sql = 'select * from tbl_personal_info';
 
     connection.query(sql, (err, result) => {
         if (err) console.log(err);
