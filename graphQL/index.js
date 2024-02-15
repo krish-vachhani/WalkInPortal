@@ -26,6 +26,16 @@ async function getJobPosting() {
     return await queryAsync(query);
 }
 
+async function getTimeSlot() {
+    const query = 'SELECT * FROM timeslot';
+    return await queryAsync(query);
+}
+
+async function getJobRoles() {
+    const query = 'SELECT * FROM jobrole';
+    return await queryAsync(query);
+}
+
 async function getSubOpening() {
     const query = 'SELECT * FROM subopening';
     return await queryAsync(query);
@@ -112,6 +122,20 @@ const resolvers = {
             const allPersonalInformation = await getPersonalInformation();
             return allPersonalInformation.find((personalInformation) => String(personalInformation.userId) === args.id);
         },
+        async timeSlots() {
+            return await getTimeSlot();
+        },
+        async timeSlot(_, args) {
+            const timeSlots = await getTimeSlot();
+            return timeSlots.find((TimeSlot) => String(TimeSlot.idtimeslot) === args.id);
+        },
+        async jobroles() {
+            return await getJobRoles();
+        },
+        async jobrole(_, args) {
+            const jobroles = await getJobRoles();
+            return jobroles.find((jobrole) => String(jobrole.idjobRole) === args.id);
+        },
         async subOpenings() {
             return await getSubOpening();
         },
@@ -163,6 +187,14 @@ const resolvers = {
         async application(parent) {
             const applications = await getApplication();
             return applications.filter((application) => String(application.openingId) === String(parent.openingId));
+        },
+        async timeslot(parent) {
+            const timeslots = await getTimeSlot();
+            return timeslots.filter((timeslot) => String(timeslot.openingId) === String(parent.openingId));
+        },
+        async jobrole(parent) {
+            const jobroles = await getJobRoles();
+            return jobroles.filter((jobrole) => String(jobrole.openingId) === String(parent.openingId));
         }
     }
 };

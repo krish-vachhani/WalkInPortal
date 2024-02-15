@@ -57,6 +57,16 @@ type PersonalInformation{
     portfolioLink:String
     resumeLink:String
 }
+type TimeSlot{
+    idtimeslot:ID!
+    openingId:ID!
+    slot:String
+}
+type JobRole{
+    idjobRole:ID!
+    openingId:ID!
+    role:String
+}
 type SubOpening{
     openingId: ID!
     jobId:ID!
@@ -65,6 +75,8 @@ type SubOpening{
     description: String
     requirements: String
     application: [Application!]
+    timeslot:[TimeSlot!]
+    jobrole:[JobRole!]
 }
 
 type JobPosting{
@@ -97,6 +109,10 @@ type Query {
     preference(id: ID!): Preferences
     allPersonalInformation: [PersonalInformation]
     personalInformation(id: ID!): PersonalInformation
+    timeSlots: [TimeSlot]
+    timeSlot(id: ID!): TimeSlot
+    jobroles: [JobRole]
+    jobrole(id: ID!): JobRole
     subOpenings: [SubOpening]
     subOpening(id: ID!): SubOpening
     jobPostings: [JobPosting]
