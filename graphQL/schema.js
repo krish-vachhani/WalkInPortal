@@ -66,14 +66,13 @@ type JobRole{
     idjobRole:ID!
     openingId:ID!
     role:String
+    compensation: Int
+    description: String
+    requirements: String
 }
 type SubOpening{
     openingId: ID!
     jobId:ID!
-    jobRole: String
-    compensation: Int
-    description: String
-    requirements: String
     application: [Application!]
     timeslot:[TimeSlot!]
     jobrole:[JobRole!]
@@ -81,6 +80,7 @@ type SubOpening{
 
 type JobPosting{
     jobId: ID!
+    title:String
     startDate: String
     expirationDate: String
     location: String
