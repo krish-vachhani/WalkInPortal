@@ -196,7 +196,114 @@ const resolvers = {
             const jobroles = await getJobRoles();
             return jobroles.filter((jobrole) => String(jobrole.openingId) === String(parent.openingId));
         }
-    }
+    },
+    Mutation: {
+        async createUser(_, {input}) {
+            const {email, hashedPassword, fullname, expertise, familiarity, personalInformation, information} = input;
+
+            const userInsert = await queryAsync(`
+        INSERT INTO user (email, hashedPassword, fullname)
+        VALUES (?, ?, ?)
+      `, [email, hashedPassword, fullname]);
+
+            const userId = userInsert.insertId;
+            // console.log(userId)
+
+            await queryAsync(`
+        INSERT INTO expertise (userId, Javascript, NodeJs, AngularJs, ReactJs)
+        VALUES (?, ?, ?, ?, ?)
+      `, [userId, expertise.Javascript, expertise.NodeJs, expertise.AngularJs, expertise.ReactJs]);
+
+
+            await queryAsync(`
+        INSERT INTO familiarity (userId, Javascript, NodeJs, AngularJs, ReactJs)
+        VALUES (?, ?, ?, ?, ?)
+      `, [userId, familiarity.Javascript, familiarity.NodeJs, familiarity.AngularJs, familiarity.ReactJs]);
+
+
+            await queryAsync(`
+        INSERT INTO personalinformation (userId, phoneNumber, portfolioLink, resumeLink)
+        VALUES (?, ?, ?, ?)
+      `, [userId, personalInformation.phoneNumber, personalInformation.portfolioLink, personalInformation.resumeLink]);
+
+
+            await queryAsync(`
+        INSERT INTO information (userId, applicantType, yearsOfExperience, currentCTC, expectedCTC, noticePeriod, noticePeriodDuration, noticePeriodEnd, previouslyApplied, previouslyAppliedRole, referrer, percentage, yearOfPassing, collegeName, qualification, stream, city)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `, [userId, information.applicantType, information.yearsOfExperience, information.currentCTC, information.expectedCTC, information.noticePeriod, information.noticePeriodDuration, information.noticePeriodEnd, information.previouslyApplied, information.previouslyAppliedRole, information.referrer, information.percentage, information.yearOfPassing, information.collegeName, information.qualification, information.stream, information.city]);
+
+            return {userId, email, hashedPassword, fullname, expertise, familiarity, personalInformation, information};
+        },
+
+        //   async createJobPosting(_, {input}) {
+        //       const {title, startDate, expirationDate, location, preferences, subOpening} = input;
+        //
+        //
+        //       const jobPostingInsert = await queryAsync(`
+        //   INSERT INTO jobposting (title, startDate, expirationDate, location)
+        //   VALUES (?, ?, ?, ?)
+        // `, [title, startDate, expirationDate, location]);
+        //
+        //       const jobId = jobPostingInsert.insertId;
+        //
+        //
+        //       await queryAsync(`
+        //   INSERT INTO preferences (jobId, InstructionalDesigner, SoftwareEngineer, QualityEngineer)
+        //   VALUES (?, ?, ?, ?)
+        // `, [jobId, preferences.InstructionalDesigner, preferences.SoftwareEngineer, preferences.QualityEngineer]);
+        //
+        //
+        //       for (const subOpeningInput of subOpening) {
+        //           const {application, timeslot, jobrole} = subOpeningInput;
+        //
+        //           const subOpeningInsert = await queryAsync(`
+        //     INSERT INTO subopening (jobId)
+        //     VALUES (?)
+        //   `, [jobId]);
+        //
+        //           const openingId = subOpeningInsert.insertId;
+        //
+        //
+        //           for (const applicationInput of application) {
+        //               await queryAsync(`
+        //       INSERT INTO application (openingId, userId, timeSlot, resume)
+        //       VALUES (?, ?, ?, ?)
+        //     `, [openingId, applicationInput.userId, applicationInput.timeSlot, applicationInput.resume]);
+        //           }
+        //
+        //
+        //           for (const timeslotInput of timeslot) {
+        //               await queryAsync(`
+        //       INSERT INTO timeslot (openingId, slot)
+        //       VALUES (?, ?)
+        //     `, [openingId, timeslotInput.slot]);
+        //           }
+        //
+        //
+        //           for (const jobroleInput of jobrole) {
+        //               await queryAsync(`
+        //       INSERT INTO jobrole (openingId, role, compensation, description, requirements)
+        //       VALUES (?, ?, ?, ?, ?)
+        //     `, [openingId, jobroleInput.role, jobroleInput.compensation, jobroleInput.description, jobroleInput.requirements]);
+        //           }
+        //       }
+        //
+        //       return {jobId, title, startDate, expirationDate, location, preferences, subOpening};
+        //   },
+
+        async applyForJob(_, {input}) {
+            const {openingId, userId, timeSlot, resume} = input;
+
+            const applicationInsert = await queryAsync(`
+        INSERT INTO application (openingId, userId, timeSlot, resume)
+        VALUES (?, ?, ?, ?)
+      `, [openingId, userId, timeSlot, resume]);
+
+            const applicationId = applicationInsert.insertId;
+
+            return {applicationId, openingId, userId, timeSlot, resume};
+        },
+    },
 };
 
 

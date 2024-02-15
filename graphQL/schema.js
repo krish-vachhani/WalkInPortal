@@ -120,5 +120,119 @@ type Query {
     applications: [Application]
     application(id: ID!): Application
 }
+
+type Mutation {
+    createUser(input: CreateUserInput!): User
+#    createJobPosting(input: CreateJobPostingInput!): JobPosting
+    applyForJob(input: ApplyForJobInput!): Application
+}
+
+input CreateUserInput {
+    email: String!
+    hashedPassword: String!
+    fullname: String!
+    expertise: ExpertiseInput!
+    familiarity: FamiliarityInput!
+    personalInformation: PersonalInformationInput!
+    information: InformationInput!
+}
+
+input ExpertiseInput {
+    userId: ID!
+    Javascript: Int!
+    NodeJs: Int!
+    AngularJs: Int!
+    ReactJs: Int!
+}
+
+input FamiliarityInput {
+    userId: ID!
+    Javascript: Int!
+    NodeJs: Int!
+    AngularJs: Int!
+    ReactJs: Int!
+}
+
+input PersonalInformationInput {
+    userId: ID!
+    phoneNumber: String!
+    portfolioLink: String
+    resumeLink: String
+}
+
+input InformationInput {
+    userId: ID!
+    applicantType: String!
+    yearsOfExperience: Int!
+    currentCTC: Int
+    expectedCTC: Int
+    noticePeriod: Int
+    noticePeriodDuration: Int
+    noticePeriodEnd: String
+    previouslyApplied: Int
+    previouslyAppliedRole: String
+    referrer: String
+    percentage: Int
+    yearOfPassing: Int
+    collegeName: String
+    qualification: String
+    stream: String
+    city: String
+}
+
+input CreateJobPostingInput {
+    title: String!
+    startDate: String!
+    expirationDate: String!
+    location: String!
+    preferences: PreferencesInput!
+    subOpening: [SubOpeningInput!]!
+}
+
+input PreferencesInput {
+    jobId: ID!
+    InstructionalDesigner: Int!
+    SoftwareEngineer: Int!
+    QualityEngineer: Int!
+}
+
+input SubOpeningInput {
+    openingId: ID!
+    jobId: ID!
+    application: [ApplicationInput!]
+    timeslot: [TimeSlotInput!]
+    jobrole: [JobRoleInput!]
+}
+
+input ApplicationInput {
+    applicationId: ID!
+    openingId: ID!
+    userId: ID!
+    timeSlot: String!
+    resume: String!
+}
+
+input TimeSlotInput {
+    idtimeslot: ID!
+    openingId: ID!
+    slot: String!
+}
+
+input JobRoleInput {
+    idjobRole: ID!
+    openingId: ID!
+    role: String!
+    compensation: Int!
+    description: String!
+    requirements: String!
+}
+
+input ApplyForJobInput {
+    openingId: ID!
+    userId: ID!
+    timeSlot: String!
+    resume: String!
+}
+
 `;
 
