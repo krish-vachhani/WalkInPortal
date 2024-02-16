@@ -1,11 +1,25 @@
-import React from "react";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import "./LoginCard.css";
 import {useNavigate} from "react-router-dom";
+import {useMutation} from "@apollo/client";
+import {LOGIN_USER} from "../../gqlOperations/mutations.js";
 
 function LoginCard() {
-        const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    const [loginUser] = useMutation(LOGIN_USER, {
+        onCompleted: (result) => {
+            alert("Login Successful");
+            localStorage.setItem("authToken", result.login.token);
+            console.log("Login successful", result);
+            navigate('/listings');
+        },
+        onError: (error) => {
+            alert("Login unsuccessful. Please check your email and password.");
+            console.error("Login error", error);
+        },
+    })
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -17,9 +31,14 @@ function LoginCard() {
             password: Yup.string().required("Required"),
         }),
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
-            console.log("Form submitted with values:", values);
-            navigate('/listings')
+            loginUser({
+                variables: {
+                    input: {
+                        email: values.email,
+                        password: values.password,
+                    }
+                },
+            }).then(r => console.log("Mutation completed"));
         },
     });
     return (

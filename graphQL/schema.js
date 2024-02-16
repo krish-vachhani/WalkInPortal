@@ -123,8 +123,19 @@ type Query {
 
 type Mutation {
     createUser(input: CreateUserInput!): User
-#    createJobPosting(input: CreateJobPostingInput!): JobPosting
+    #    createJobPosting(input: CreateJobPostingInput!): JobPosting
     applyForJob(input: ApplyForJobInput!): Application
+    login(input: LoginInput!): AuthPayload
+}
+
+
+input LoginInput {
+    email: String!
+    password: String!
+}
+
+type AuthPayload {
+    token: String!
 }
 
 input CreateUserInput {
