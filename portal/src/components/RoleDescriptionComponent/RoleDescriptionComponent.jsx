@@ -1,14 +1,23 @@
 import './RoleDescriptionComponent.css';
 import roleData from "../../data/roleData.json";
 import React from "react";
+import {useQuery} from "@apollo/client";
+import {GET_SINGLE_LISTING} from "../../gqlOperations/queries.js";
 
 
 function RoleDescriptionComponent(props) {
-    const id = props.id
-    const role = props.role
-    const roleDescription = roleData[role].roleDescription
-    const requirements = roleData[role].requirements
-    const salary = roleData[role].salary
+    function formatSalary(value) {
+        return value.toLocaleString('en-IN', {
+            maximumFractionDigits: 0
+        });
+    }
+
+    const roleDetails = props.roleDetails
+    const id = roleDetails.idjobRole
+    const role = roleDetails.role
+    const roleDescription = roleDetails.description
+    const requirements = roleDetails.requirements
+    let salary = formatSalary(roleDetails.compensation);
 
     const [isExpandedRole, setIsExpandedRole] = React.useState(false);
     const handleToggleExpandRole = () => {
@@ -29,7 +38,7 @@ function RoleDescriptionComponent(props) {
                     <label className="listingExpanded-role-generalInstructions-label">Gross Compensation Package
                         :</label>
                     <p className="listingExpanded-role-generalInstructions-paragraph">
-                        {salary}
+                        Rs. {salary} lpa
                     </p>
                 </div>
                 <hr className="listingExpanded-role-separator"/>

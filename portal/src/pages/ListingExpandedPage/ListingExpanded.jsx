@@ -1,18 +1,19 @@
 import './ListingExpanded.css';
 import {useParams} from "react-router-dom";
-import textDataFull from "../../data/listingData.json";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import React from "react";
 import RoleDescriptionComponent from "../../components/RoleDescriptionComponent/RoleDescriptionComponent.jsx";
 import MainHeader from "../../components/MainHeaderComponent/MainHeader.jsx";
+import {GET_SINGLE_LISTING} from "../../gqlOperations/queries.js";
+import {useQuery} from "@apollo/client";
 
 function ListingExpanded() {
     const {id} = useParams();
-    const data = textDataFull.find((item) => {
-        return parseInt(item.id) === parseInt(id)
-    })
-    const [textContent, setTextContent] = React.useState(data)
+    const {loading, error, data} = useQuery(GET_SINGLE_LISTING, {
+        variables: {jobPostingId: id}
+    });
+
     const [isExpandedBasicInfo, setIsExpandedBasicInfo] = React.useState(false);
 
     const validationSchema = Yup.object({
@@ -40,39 +41,61 @@ function ListingExpanded() {
         setIsExpandedBasicInfo((prevState) => !prevState)
 
     }
+
+    if (loading) return <h1>Loading..</h1>
+    if (error) console.log(error.message)
+    console.log(data)
     return (
         <div>
             <MainHeader/>
             <div className="listingExpanded-component">
                 <form onSubmit={formik.handleSubmit}>
                     <div className="title-div">
-                        <h2 className="listingExpanded-job-title">{textContent.title}</h2>
+                        <h2 className="listingExpanded-job-title">{data.jobPosting.title}</h2>
                         <button className="apply-button" type="submit">Apply</button>
                     </div>
                     <div className="listingExpanded-div--datetime">
                         <label className="listingExpanded-date-time-label">Date & Time :</label>
                     </div>
                     <div className="listingExpanded-date-time">
-                        <label className="listingExpanded-date-range">{textContent.dateRange}</label>
+                        <label
+                            className="listingExpanded-date-range">{data.jobPosting.startDate} to {data.jobPosting.expirationDate}</label>
                         <div className="listingExpanded-verticalDivider"></div>
                         <img src="/public/resources/location_on_black_24dp.svg" alt=""
                              className="listingExpanded-location-icon"/>
-                        <label className="listingExpanded-location-label">{textContent.locationLabel}</label>
+                        <label className="listingExpanded-location-label">{data.jobPosting.location}</label>
                     </div>
                     <hr className="listingExpanded-separator"/>
                     <div className="listingExpanded-job-roles-container">
                         <label className="listingExpanded-job-roles-label">Job Roles :</label>
                         <div className="listingExpanded-job-roles-list">
-                            {textContent.rolesData.map((role, index) => (
-                                <div key={index} className="listingExpanded-job-role">
-                                    <div className="listingExpanded-image-div">
-                                        <img src={role.image} alt=""/>
+                            {data.jobPosting.subOpening.map((item, index) => {
+                                return (
+                                    <div key={index} className="job-role">
+                                        {item.jobrole.map((role, index) => (
+                                            <div key={role.idjobRole} className="listingExpanded-job-role">
+                                                <div className="listingExpanded-image-div">
+                                                    {String(role.role) === "Instructional Designer" ? (
+                                                        <img src="/resources/Instructional Designer.svg"
+                                                             alt="Instructional Designer Image"/>
+                                                    ) : String(role.role) === "Software Engineer" ? (
+                                                        <img src="/resources/Instructional Designer.svg"
+                                                             alt="Software Engineer Image"/>
+                                                    ) : (
+                                                        <img src="/resources/Software Quality Engineer.svg"
+                                                             alt="Default Image"/>
+                                                    )}
+                                                </div>
+
+                                                <label className="listingExpanded-role-name">{role.role}</label>
+                                                {(index !== (item.jobrole.length - 1)) &&
+                                                    <div className="listingExpanded-verticalDivider"></div>
+                                                }
+                                            </div>
+                                        ))}
                                     </div>
-                                    <label className="listingExpanded-role-name">{role.name}</label>
-                                    {(index !== (textContent.rolesData.length - 1)) &&
-                                        <div className="listingExpanded-verticalDivider"></div>}
-                                </div>
-                            ))}
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="listingExpanded-basicInfoDropdownDiv" onClick={handleToggleExpandBasicInfo}>
@@ -86,12 +109,15 @@ function ListingExpanded() {
                     </div>
                     {isExpandedBasicInfo && <div className="listingExpanded-component-basicInfoExpanded">
                         <div className="listingExpanded-component-basicInfoExpanded-generalInstructions-div">
-                            <label className="listingExpanded-generalInstructions-label">General Instructions :</label>
+                            <label className="listingExpanded-generalInstructions-label">General Instructions
+                                :</label>
                             <p className="listingExpanded-generalInstructions-paragraph">
-                                - We have a two–year indemnity for permanent candidates. We will provide training to the
+                                - We have a two–year indemnity for permanent candidates. We will provide training to
+                                the
                                 selected candidates.
                                 <br/>
-                                - Candidates who have appeared for any test held by Zeus Learning in the past 12 months
+                                - Candidates who have appeared for any test held by Zeus Learning in the past 12
+                                months
                                 will
                                 not
                                 be allowed to appear for this recruitment test.
@@ -99,11 +125,14 @@ function ListingExpanded() {
                         </div>
                         <hr className="listingExpanded-separator"/>
                         <div className="listingExpanded-component-basicInfoExpanded-generalInstructions-div">
-                            <label className="listingExpanded-generalInstructions-label">General Instructions :</label>
+                            <label className="listingExpanded-generalInstructions-label">General Instructions
+                                :</label>
                             <p className="listingExpanded-generalInstructions-paragraph">
-                                - Candidates are requested to log in half an hour prior to the exam start time as they
+                                - Candidates are requested to log in half an hour prior to the exam start time as
+                                they
                                 would
-                                need to capture their image using a web camera. By taking this test, you are permitting
+                                need to capture their image using a web camera. By taking this test, you are
+                                permitting
                                 the
                                 examination system to capture your video for invigilation purposes.
                                 <br/>
@@ -112,20 +141,23 @@ function ListingExpanded() {
                                 system
                                 is not functional.
                                 <br/>
-                                - The web camera of your system must be enabled and must remain switched on throughout
+                                - The web camera of your system must be enabled and must remain switched on
+                                throughout
                                 the
                                 examination. In the event of non-receipt of a webcam, your examination will be
                                 considered
                                 null
                                 and void.
                                 <br/>
-                                - Candidate’s audio and video will be recorded during the examination and will also be
+                                - Candidate’s audio and video will be recorded during the examination and will also
+                                be
                                 monitored
                                 by a live proctor. The proctor may terminate your exam in case he/she observes any
                                 malpractice
                                 during the exam.
                                 <br/>
-                                - Candidates are advised to use their own Laptop/PC with a stable internet connection
+                                - Candidates are advised to use their own Laptop/PC with a stable internet
+                                connection
                                 (min 1
                                 Mbps) during the exam.
                                 <br/>
@@ -137,7 +169,8 @@ function ListingExpanded() {
                             <label className="listingExpanded-generalInstructions-label">Minimum System Requirements
                                 :</label>
                             <p className="listingExpanded-generalInstructions-paragraph">
-                                - Personal Laptop or Desktop computer in working condition with good quality camera (you
+                                - Personal Laptop or Desktop computer in working condition with good quality camera
+                                (you
                                 can
                                 use
                                 Windows 7 and above).
@@ -178,23 +211,24 @@ function ListingExpanded() {
                                 :</label>
                             <div className="listingExpanded-radio-buttons">
                                 {
-                                    textDataFull[id - 1].timeSlots.map((timeslot) => {
+                                    data.jobPosting.subOpening[0].timeslot.map((timeslot) => {
                                         return (
-                                            <div key={timeslot.id}>
+                                            <div key={timeslot.idtimeslot}>
                                                 <input
                                                     type="radio"
-                                                    id={timeslot.id}
+                                                    id={timeslot.idtimeslot}
                                                     name="timeSlot"
-                                                    value={timeslot.value}
-                                                    checked={formik.values.timeSlot === timeslot.value}
+                                                    value={timeslot.slot}
+                                                    checked={formik.values.timeSlot === timeslot.slot}
                                                     onChange={formik.handleChange}
                                                     onBlur={formik.handleBlur}
                                                 />
-                                                <label htmlFor={timeslot.id}>{timeslot.value}</label>
+                                                <label htmlFor={timeslot.idtimeslot}>{timeslot.slot}</label>
                                             </div>
                                         )
                                     })
                                 }
+
                                 {formik.touched.timeSlot && formik.errors.timeSlot && (
                                     <div className="error-message">{formik.errors.timeSlot}</div>
                                 )}
@@ -209,30 +243,30 @@ function ListingExpanded() {
                                 :</label>
                             <div className="listingExpanded-checkboxes">
                                 {
-                                    textDataFull[id - 1].rolesData.map((roleData) => {
+                                    data.jobPosting.subOpening[0].jobrole.map((roleData) => {
                                         return (
-                                            <div key={roleData.name}>
+                                            <div key={roleData.idjobRole}>
                                                 <input
                                                     type="checkbox"
-                                                    id={roleData.name}
-                                                    name={roleData.name}
-                                                    checked={formik.values.selectedRoles.includes(roleData.name)}
+                                                    id={roleData.idjobRole}
+                                                    name={roleData.role}
+                                                    checked={formik.values.selectedRoles.includes(roleData.role)}
                                                     onChange={() => {
                                                         formik.setFieldValue(
                                                             'selectedRoles',
-                                                            formik.values.selectedRoles.includes(roleData.name)
-                                                                ? formik.values.selectedRoles.filter((role) => role !== roleData.name)
-                                                                : [...formik.values.selectedRoles, roleData.name]
+                                                            formik.values.selectedRoles.includes(roleData.role)
+                                                                ? formik.values.selectedRoles.filter((role) => role !== roleData.role)
+                                                                : [...formik.values.selectedRoles, roleData.role]
                                                         );
                                                     }}
                                                     onBlur={formik.handleBlur}
                                                 />
-                                                <label htmlFor={roleData.name}>{roleData.name}</label>
+                                                <label htmlFor={roleData.idjobRole}>{roleData.role}</label>
                                             </div>
                                         )
-
                                     })
                                 }
+
                                 {formik.touched.selectedRoles && formik.errors.selectedRoles && (
                                     <div className="error-message">{formik.errors.selectedRoles}</div>
                                 )}
@@ -246,8 +280,8 @@ function ListingExpanded() {
                         </div>
                     </div>
                     <div className="RoleDescriptionComponent--div">
-                        {textContent.rolesData.map((role, index) => {
-                            return <RoleDescriptionComponent key={index} role={role.name}/>
+                        {data.jobPosting.subOpening[0].jobrole.map((role) => {
+                            return <RoleDescriptionComponent key={role.idjobRole} roleDetails={role}/>
                         })}
                     </div>
                 </form>

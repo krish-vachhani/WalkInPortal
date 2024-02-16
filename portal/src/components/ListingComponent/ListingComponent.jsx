@@ -47,7 +47,8 @@ function ListingComponent(props) {
                         </div>
                     );
                     // return (<div></div>)
-                })}
+                })
+                }
             </div>
         </div>
         {/*{textContent.extraInfoLabel.length > 0 && <div className="extraInfo-div">*/}
