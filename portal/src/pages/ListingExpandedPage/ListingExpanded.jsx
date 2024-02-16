@@ -6,10 +6,20 @@ import React from "react";
 import RoleDescriptionComponent from "../../components/RoleDescriptionComponent/RoleDescriptionComponent.jsx";
 import MainHeader from "../../components/MainHeaderComponent/MainHeader.jsx";
 import {GET_SINGLE_LISTING} from "../../gqlOperations/queries.js";
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
+import {APPLY_FOR_JOB, LOGIN_USER} from "../../gqlOperations/mutations.js";
 
 function ListingExpanded() {
     const {id} = useParams();
+    const [applyForTheListing] = useMutation(APPLY_FOR_JOB, {
+        onCompleted: (result) => {
+            alert("Successfully Applied");
+        },
+        onError: (error) => {
+            alert("Login unsuccessful. Please check your email and password.");
+            console.error("Login error", error);
+        },
+    })
     const {loading, error, data} = useQuery(GET_SINGLE_LISTING, {
         variables: {jobPostingId: id}
     });
@@ -32,8 +42,16 @@ function ListingExpanded() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
-            console.log(values)
+            applyForTheListing({
+                variables: {
+                    "input": {
+                        "openingId":id,
+                        "userId": localStorage.getItem("userId"),
+                        "timeSlot":"",
+                        "resume":""
+                    }
+                },
+            }).then(r => console.log("Mutation completed"));
         },
     });
 

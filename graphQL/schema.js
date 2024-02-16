@@ -4,11 +4,11 @@ type User{
     email: String
     hashedPassword: String
     fullname: String
-    expertise:Expertise!
-    familiarity:Familiarity!
-    personalInformation:PersonalInformation!
-    application:[Application!]
-    information:Information!
+    expertise:Expertise
+    familiarity:Familiarity
+    personalInformation:PersonalInformation
+    application:[Application]
+    information:Information
 }
 
 type Expertise{
@@ -136,6 +136,7 @@ input LoginInput {
 
 type AuthPayload {
     token: String!
+    user:User!
 }
 
 input CreateUserInput {

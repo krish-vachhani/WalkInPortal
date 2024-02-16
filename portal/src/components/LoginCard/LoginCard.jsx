@@ -12,6 +12,7 @@ function LoginCard() {
         onCompleted: (result) => {
             alert("Login Successful");
             localStorage.setItem("authToken", result.login.token);
+            localStorage.setItem('userId',result.login.user.userId);
             console.log("Login successful", result);
             navigate('/listings');
         },

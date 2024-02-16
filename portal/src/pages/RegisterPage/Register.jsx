@@ -7,6 +7,8 @@ import {useParams, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import * as Yup from "yup";
 import MainHeader from "../../components/MainHeaderComponent/MainHeader.jsx";
+import {useMutation} from "@apollo/client";
+import {APPLY_FOR_JOB, CREATE_USER} from "../../gqlOperations/mutations.js";
 
 const personalDetailSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name is required"),
@@ -63,12 +65,20 @@ const qualificationDetailSchema = Yup.object().shape({
 });
 
 export default function Register() {
+
+    const [registerUser] = useMutation(CREATE_USER, {
+        onCompleted: (result) => {
+            alert("Successfully Created Account");
+        },
+        onError: (error) => {
+            alert("Account Creation Failed");
+            console.error("Login error", error);
+        },
+    })
     const {id} = useParams();
     const navigate = useNavigate();
 
-    const goJobOpening = () => {
-        navigate(`/jobopeningdetails/${id}`);
-    };
+
 
     const goLogin = () => {
         navigate(`/walkinlogin/${id}`);
@@ -108,7 +118,54 @@ export default function Register() {
         familiarOther: "",
         applyRole: "",
     });
-
+    const registerTheUser = () => {
+        registerUser({
+            variables: {
+                "input": {
+                    "email": formData.email,
+                    "hashedPassword": "temppassword",
+                    "fullname": formData.firstName+" "+formData.lastName,
+                    "expertise": {
+                        "Javascript": 1,
+                        "NodeJs": 1,
+                        "AngularJs": 1,
+                        "ReactJs": 1
+                    },
+                    "familiarity": {
+                        "Javascript": 1,
+                        "NodeJs": 1,
+                        "AngularJs": 1,
+                        "ReactJs": 1
+                    },
+                    "personalInformation": {
+                        "phoneNumber": formData.phoneNumber,
+                        "portfolioLink": formData.portfoliourl,
+                        "resumeLink": formData.resumeFile
+                    },
+                    "information": {
+                        "applicantType": formData.applicant,
+                        "yearsOfExperience": formData.yearOfExp,
+                        "currentCTC": formData.currentCTC,
+                        "expectedCTC": formData.expCTC,
+                        "noticePeriod": formData.curNoticePeriod,
+                        "noticePeriodDuration": formData.lengthOfNoticePeriod,
+                        "noticePeriodEnd": formData.endNoticePeriod,
+                        "previouslyApplied": formData.isAppearedTest,
+                        "previouslyAppliedRole": formData.applyRole,
+                        "referrer": formData.referralName,
+                        "percentage": formData.percentage,
+                        "yearOfPassing": formData.yearOfPassing,
+                        "collegeName": formData.college,
+                        "qualification": formData.qualification,
+                        "stream": formData.stream,
+                        "city": formData.city
+                    }
+                }
+            }
+            ,
+        }).then(r => console.log("Mutation completed"));
+        // navigate(`/jobopeningdetails/${id}`);
+    };
     const goQualification = (event) => {
         event.preventDefault();
         if (page === 0) {
@@ -161,7 +218,7 @@ export default function Register() {
                             <button onClick={goLogin}>CANCEL</button>
                         </div>
                         <div className={style.createBtn}>
-                            <button disabled={page !== 2} onClick={goJobOpening}>
+                            <button disabled={page !== 2} onClick={registerTheUser}>
                                 CREATE
                             </button>
                         </div>

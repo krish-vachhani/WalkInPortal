@@ -135,71 +135,42 @@ const resolvers = {
             return await getJobPosting();
         },
         async jobPosting(_, args) {
+
             const JobPostings = await getJobPosting();
             return JobPostings.find((JobPosting) => String(JobPosting.jobId) === args.id);
         },
         async expertises(_, __, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             return await getExpertise();
         },
         async expertise(_, args, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const expertise = await getExpertise();
             return expertise.find((user) => String(user.userId) === args.id);
         },
         async familiarities(_, __, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             return await getFamiliarity();
         },
         async familiarity(_, args, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const familiarities = await getFamiliarity();
             return familiarities.find((familiarity) => String(familiarity.userId) === args.id);
         },
         async allInformation(_, __, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             return await getInformation();
         },
         async information(_, args, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const allInformation = await getInformation();
             return allInformation.find((information) => String(information.userId) === args.id);
         },
         async preferences(_, __, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             return await getPreference();
         },
         async preference(_, args, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const preferences = await getPreference();
             return preferences.find((preference) => String(preference.jobId) === args.id);
         },
         async allPersonalInformation(_, __, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             return await getPersonalInformation();
         },
         async personalInformation(_, args, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const allPersonalInformation = await getPersonalInformation();
             return allPersonalInformation.find((personalInformation) => String(personalInformation.userId) === args.id);
         },
@@ -243,52 +214,33 @@ const resolvers = {
             return subOpenings.find((subOpening) => String(subOpening.openingId) === args.id);
         },
         async applications(_, __, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             return await getApplication();
         },
         async application(_, args, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const applications = await getApplication();
             return applications.find((application) => String(application.applicationId) === args.id);
         },
     },
     User: {
         async expertise(parent, _, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const expertises = await getExpertise();
             return expertises.find((expertise) => String(expertise.userId) === String(parent.userId));
         },
         async familiarity(parent, _, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const familiarities = await getFamiliarity();
             return familiarities.find((familiarity) => String(familiarity.userId) === String(parent.userId));
         },
         async personalInformation(parent, _, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
+
             const allPersonalInformation = await getPersonalInformation();
             return allPersonalInformation.find((personalInformation) => String(personalInformation.userId) === String(parent.userId));
         },
         async application(parent, _, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
+
             const allApplication = await getApplication();
             return allApplication.filter((application) => String(application.userId) === String(parent.userId));
         },
         async information(parent, _, {user}) {
-            if (!user) {
-                throw new AuthenticationError('User not authenticated');
-            }
             const allInformation = await getInformation();
             return allInformation.find((information) => String(information.userId) === String(parent.userId));
         },
@@ -363,7 +315,6 @@ const resolvers = {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `, [userId, information.applicantType, information.yearsOfExperience, information.currentCTC, information.expectedCTC, information.noticePeriod, information.noticePeriodDuration, information.noticePeriodEnd, information.previouslyApplied, information.previouslyAppliedRole, information.referrer, information.percentage, information.yearOfPassing, information.collegeName, information.qualification, information.stream, information.city]);
 
-            return {userId, email, hashedPassword, fullname, expertise, familiarity, personalInformation, information};
         },
 
         async applyForJob(_, {input}, {user}) {
