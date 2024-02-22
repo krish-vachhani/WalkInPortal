@@ -87,13 +87,18 @@ type JobPosting{
     subOpening: [SubOpening!]
     preferences: Preferences!
 }
-
+type ApplicationRoleMapping{
+    id:ID!
+    applicationId:ID!
+    roles:String
+}
 type Application{
     applicationId: ID!
     openingId:ID!
     userId: ID!
     timeSlot: String
     resume: String
+    applicationRoleMapping:ApplicationRoleMapping
 }
 
 type Query {
@@ -119,12 +124,14 @@ type Query {
     jobPosting(id: ID!): JobPosting
     applications: [Application]
     application(id: ID!): Application
+    ApplicationRoleMappings: [ApplicationRoleMapping]
+    ApplicationRoleMapping(id: ID!): ApplicationRoleMapping
 }
 
 type Mutation {
     createUser(input: CreateUserInput!): ID!
     #    createJobPosting(input: CreateJobPostingInput!): JobPosting
-    applyForJob(input: ApplyForJobInput!): Application
+    applyForJob(input: ApplyForJobInput!): ID!
     login(input: LoginInput!): AuthPayload
 }
 
@@ -215,7 +222,11 @@ input SubOpeningInput {
     timeslot: [TimeSlotInput!]
     jobrole: [JobRoleInput!]
 }
-
+input ApplicationRoleMappingInput{
+    id:ID!
+    applicationId:ID!
+    roles:String
+}
 input ApplicationInput {
     applicationId: ID!
     openingId: ID!
@@ -244,6 +255,7 @@ input ApplyForJobInput {
     userId: ID!
     timeSlot: String!
     resume: String!
+    applicationRoleMapping:ApplicationRoleMappingInput!
 }
 
 `;

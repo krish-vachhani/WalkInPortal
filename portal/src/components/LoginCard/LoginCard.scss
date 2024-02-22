@@ -95,6 +95,9 @@ form {
   background-color: #3FD28B;
   border: none;
   box-shadow: 0 0.3rem 0.5rem #0000003D;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .mainCard--createAccount {
@@ -116,6 +119,9 @@ form {
   font-size: 1.4rem;
   color: #1F7A54;
   margin-top: 0.4rem;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: 488px) {

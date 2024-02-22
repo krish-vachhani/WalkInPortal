@@ -103,6 +103,11 @@ async function getApplication() {
     return await queryAsync(query);
 }
 
+async function applicationRoleMapping() {
+    const query = 'SELECT * FROM application_role_mapping';
+    return await queryAsync(query);
+}
+
 async function getInformation() {
     const query = 'SELECT * FROM Information';
     return await queryAsync(query);
@@ -134,7 +139,7 @@ const resolvers = {
             }
             return await getJobPosting();
         },
-        async jobPosting(_, args,{user}) {
+        async jobPosting(_, args, {user}) {
             if (!user) {
                 throw new AuthenticationError('User not authenticated');
             }
@@ -258,6 +263,20 @@ const resolvers = {
             const applications = await getApplication();
             return applications.find((application) => String(application.applicationId) === args.id);
         },
+        async ApplicationRoleMappings(_, __, {user}) {
+            if (!user) {
+                throw new AuthenticationError('User not authenticated');
+            }
+            return await applicationRoleMapping();
+        },
+        async ApplicationRoleMapping(_, args, {user}) {
+            if (!user) {
+                throw new AuthenticationError('User not authenticated');
+            }
+            const ApplicationRoleMappings = await applicationRoleMapping();
+            return ApplicationRoleMappings.find((ApplicationRoleMapping) => String(ApplicationRoleMapping.id) === args.id);
+        },
+
     },
     User: {
         async expertise(parent, _, {user}) {
@@ -297,6 +316,15 @@ const resolvers = {
             const allInformation = await getInformation();
             return allInformation.find((information) => String(information.userId) === String(parent.userId));
         },
+    }, Application: {
+        async applicationRoleMapping(parent, _, {user}) {
+            if (!user) {
+                throw new AuthenticationError('User not authenticated');
+            }
+            const ApplicationRoleMappings = await applicationRoleMapping();
+            return ApplicationRoleMappings.filter((ApplicationRoleMapping) => String(ApplicationRoleMapping.applicationId) === String(parent.applicationId));
+        },
+
     },
     JobPosting: {
         async subOpening(parent, _, {user}) {
@@ -305,7 +333,8 @@ const resolvers = {
             }
             const SubOpenings = await getSubOpening();
             return SubOpenings.filter((SubOpening) => String(SubOpening.jobId) === String(parent.jobId));
-        },
+        }
+        ,
         async preferences(parent, _, {user}) {
             if (!user) {
                 throw new AuthenticationError('User not authenticated');
@@ -370,21 +399,48 @@ const resolvers = {
             return userId
         },
 
+        //   async applyForJob(_, {input}, {user}) {
+        //       if (!user) {
+        //           throw new AuthenticationError('User not authenticated');
+        //       }
+        //       const {openingId, userId, timeSlot, resume} = input;
+        //
+        //       const applicationInsert = await queryAsync(`
+        //   INSERT INTO application (openingId, userId, timeSlot, resume)
+        //   VALUES (?, ?, ?, ?)
+        // `, [openingId, userId, timeSlot, resume]);
+        //
+        //       const applicationId = applicationInsert.insertId;
+        //
+        //       return {applicationId, openingId, userId, timeSlot, resume};
+        //   },
         async applyForJob(_, {input}, {user}) {
             if (!user) {
                 throw new AuthenticationError('User not authenticated');
             }
-            const {openingId, userId, timeSlot, resume} = input;
 
+            const {openingId, userId, timeSlot, resume, applicationRoleMapping} = input;
+
+            // Insert into application table
             const applicationInsert = await queryAsync(`
-        INSERT INTO application (openingId, userId, timeSlot, resume)
-        VALUES (?, ?, ?, ?)
-      `, [openingId, userId, timeSlot, resume]);
+    INSERT INTO application (openingId, userId, timeSlot, resume)
+    VALUES (?, ?, ?, ?)
+  `, [openingId, userId, timeSlot, resume]);
 
             const applicationId = applicationInsert.insertId;
 
-            return {applicationId, openingId, userId, timeSlot, resume};
+            // Insert into application_role_mapping table
+            const {roles} = applicationRoleMapping;
+
+            const roleMappingInsert = await queryAsync(`
+    INSERT INTO application_role_mapping (applicationId, roles)
+    VALUES (?, ?)
+  `, [applicationId, roles]);
+
+            const id = roleMappingInsert.insertId; // Retrieve the inserted role mapping ID
+            return applicationId;
         },
+
         login: async (_, {input}) => {
             const {email, password} = input;
             const user = await authenticateUser(email, password);

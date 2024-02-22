@@ -16,8 +16,14 @@ function ListingExpanded() {
             alert("Successfully Applied");
         },
         onError: (error) => {
-            alert("Login unsuccessful. Please check your email and password.");
-            console.error("Login error", error);
+            alert("Application Failed");
+            console.error("Application Failed", error);
+
+            if (error.graphQLErrors) {
+                console.error("GraphQL errors:", error.graphQLErrors);
+                const validationErrors = error.graphQLErrors[0]?.extensions?.validation;
+                console.error("Validation errors:", validationErrors);
+            }
         },
     })
     const {loading, error, data} = useQuery(GET_SINGLE_LISTING, {
@@ -42,13 +48,19 @@ function ListingExpanded() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
+            alert(values.selectedRoles)
             applyForTheListing({
                 variables: {
                     "input": {
-                        "openingId":id,
-                        "userId": localStorage.getItem("userId"),
-                        "timeSlot":"",
-                        "resume":""
+                        "openingId": "1",
+                        "userId": parseInt(localStorage.getItem("userId")),
+                        "timeSlot": values.timeSlot,
+                        "resume": "1",
+                        "applicationRoleMapping": {
+                            "id": "1",
+                            "applicationId": parseInt(id),
+                            "roles": values.selectedRoles.join(",").toString()
+                        }
                     }
                 },
             }).then(r => console.log("Mutation completed"));

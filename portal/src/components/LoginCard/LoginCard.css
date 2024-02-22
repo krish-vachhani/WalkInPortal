@@ -91,6 +91,9 @@ form {
   border: none;
   box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2392156863);
 }
+.loginButton:hover {
+  cursor: pointer;
+}
 
 .mainCard--createAccount {
   display: flex;
@@ -111,6 +114,9 @@ form {
   font-size: 1.4rem;
   color: #1F7A54;
   margin-top: 0.4rem;
+}
+.createAccount--label:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 488px) {

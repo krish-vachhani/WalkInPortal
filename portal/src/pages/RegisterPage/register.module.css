@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Museo+Sans:ital,wght@0,500&display=swap");
+* {
+  font-family: "Quicksand", sans-serif;
+}
+
 .registerNavbar .navbarItems {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

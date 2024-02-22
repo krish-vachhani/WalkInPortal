@@ -6,6 +6,7 @@ import ListingExpanded from "./pages/ListingExpandedPage/ListingExpanded.jsx";
 import SuccessPage from "./pages/SuccessPage/SuccessPage.jsx";
 import Register from "./pages/RegisterPage/Register.jsx";
 import Home from "./pages/HomePage/Home.jsx";
+import Error404 from "./pages/Error404/Error404.jsx";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/listings/:id" element={<ListingExpanded/>}/>
                 <Route path="/listings/:id/success" element={<SuccessPage/>}/>
                 <Route path="/register" element={<Register/>}/>
+                <Route path="*" element={<Error404/>}/>
             </Routes>
         </Router>
 

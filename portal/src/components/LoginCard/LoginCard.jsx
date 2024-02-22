@@ -73,7 +73,7 @@ function LoginCard() {
                         onBlur={formik.handleBlur}
                         value={formik.values.password}
                     />
-                    <img src="public/resources/preview.svg" alt=""/>
+                    <img src="portal/public" alt=""/>
                 </div>
                 {formik.touched.password && formik.errors.password ? (
                     <div className="error">{formik.errors.password}</div>

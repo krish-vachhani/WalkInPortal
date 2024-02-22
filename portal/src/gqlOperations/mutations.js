@@ -14,12 +14,7 @@ export const LOGIN_USER = gql`
 
 export const APPLY_FOR_JOB = gql`
     mutation ApplyForJob($input: ApplyForJobInput!) {
-        applyForJob(input: $input) {
-            openingId
-            userId
-            timeSlot
-            resume
-        }
+        applyForJob(input: $input)
     }
 `
 
