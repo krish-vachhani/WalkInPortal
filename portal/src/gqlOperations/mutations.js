@@ -25,45 +25,6 @@ export const APPLY_FOR_JOB = gql`
 
 export const CREATE_USER = gql`
     mutation CreateUser($input: CreateUserInput!) {
-        createUser(input: $input) {
-            email
-            hashedPassword
-            fullname
-            expertise {
-                Javascript
-                NodeJs
-                AngularJs
-                ReactJs
-            }
-            familiarity {
-                Javascript
-                NodeJs
-                AngularJs
-                ReactJs
-            }
-            personalInformation {
-                phoneNumber
-                portfolioLink
-                resumeLink
-            }
-            information {
-                applicantType
-                yearsOfExperience
-                currentCTC
-                expectedCTC
-                noticePeriod
-                noticePeriodDuration
-                noticePeriodEnd
-                previouslyApplied
-                previouslyAppliedRole
-                referrer
-                percentage
-                yearOfPassing
-                collegeName
-                qualification
-                stream
-                city
-            }
-        }
+        createUser(input: $input)
     }
 `

@@ -5,11 +5,13 @@ import ListingPage from "./pages/ListingPage/ListingPage";
 import ListingExpanded from "./pages/ListingExpandedPage/ListingExpanded.jsx";
 import SuccessPage from "./pages/SuccessPage/SuccessPage.jsx";
 import Register from "./pages/RegisterPage/Register.jsx";
+import Home from "./pages/HomePage/Home.jsx";
 
 function App() {
 
     return (<Router>
             <Routes>
+                <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/listings" element={<ListingPage/>}/>
                 <Route path="/listings/:id" element={<ListingExpanded/>}/>

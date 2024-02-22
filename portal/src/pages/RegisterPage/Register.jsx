@@ -71,13 +71,21 @@ export default function Register() {
             alert("Successfully Created Account");
         },
         onError: (error) => {
+            if (error.graphQLErrors.length > 0) {
+                console.error("GraphQL errors:", error.graphQLErrors);
+            }
             alert("Account Creation Failed");
             console.error("Login error", error);
+
+            if (error.graphQLErrors) {
+                console.error("GraphQL errors:", error.graphQLErrors);
+                const validationErrors = error.graphQLErrors[0]?.extensions?.validation;
+                console.error("Validation errors:", validationErrors);
+            }
         },
     })
     const {id} = useParams();
     const navigate = useNavigate();
-
 
 
     const goLogin = () => {
@@ -119,46 +127,51 @@ export default function Register() {
         applyRole: "",
     });
     const registerTheUser = () => {
-        registerUser({
+        console.log(formData.email)
+         registerUser({
             variables: {
                 "input": {
                     "email": formData.email,
                     "hashedPassword": "temppassword",
-                    "fullname": formData.firstName+" "+formData.lastName,
+                    "fullname": formData.firstName + " " + formData.lastName,
                     "expertise": {
+                        "userId": "1",
                         "Javascript": 1,
                         "NodeJs": 1,
                         "AngularJs": 1,
                         "ReactJs": 1
                     },
                     "familiarity": {
+                        "userId": "1",
                         "Javascript": 1,
                         "NodeJs": 1,
                         "AngularJs": 1,
                         "ReactJs": 1
                     },
                     "personalInformation": {
+                        "userId": "1",
                         "phoneNumber": formData.phoneNumber,
                         "portfolioLink": formData.portfoliourl,
                         "resumeLink": formData.resumeFile
                     },
                     "information": {
+                        "userId": "1",
                         "applicantType": formData.applicant,
-                        "yearsOfExperience": formData.yearOfExp,
-                        "currentCTC": formData.currentCTC,
-                        "expectedCTC": formData.expCTC,
-                        "noticePeriod": formData.curNoticePeriod,
-                        "noticePeriodDuration": formData.lengthOfNoticePeriod,
+                        "yearsOfExperience": parseInt(formData.yearOfExp) || 0,
+                        "currentCTC": parseInt(formData.currentCTC)|| 0,
+                        "expectedCTC": parseInt(formData.expCTC)|| 0,
+                        "noticePeriod": parseInt(formData.curNoticePeriod)|| 0,
+                        "noticePeriodDuration": parseInt(formData.lengthOfNoticePeriod)|| 0,
                         "noticePeriodEnd": formData.endNoticePeriod,
-                        "previouslyApplied": formData.isAppearedTest,
+                        "previouslyApplied": parseInt(formData.isAppearedTest)|| 0,
                         "previouslyAppliedRole": formData.applyRole,
                         "referrer": formData.referralName,
-                        "percentage": formData.percentage,
-                        "yearOfPassing": formData.yearOfPassing,
+                        "percentage": parseInt(formData.percentage)|| 0,
+                        "yearOfPassing": parseInt(formData.yearOfPassing)|| 0,
                         "collegeName": formData.college,
                         "qualification": formData.qualification,
                         "stream": formData.stream,
-                        "city": formData.city
+                        "city": formData.location || ""
                     }
                 }
             }

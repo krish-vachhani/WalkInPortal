@@ -122,7 +122,7 @@ type Query {
 }
 
 type Mutation {
-    createUser(input: CreateUserInput!): User
+    createUser(input: CreateUserInput!): ID!
     #    createJobPosting(input: CreateJobPostingInput!): JobPosting
     applyForJob(input: ApplyForJobInput!): Application
     login(input: LoginInput!): AuthPayload
@@ -151,18 +151,18 @@ input CreateUserInput {
 
 input ExpertiseInput {
     userId: ID!
-    Javascript: Int!
-    NodeJs: Int!
-    AngularJs: Int!
-    ReactJs: Int!
+    Javascript: Int
+    NodeJs: Int
+    AngularJs: Int
+    ReactJs: Int
 }
 
 input FamiliarityInput {
     userId: ID!
-    Javascript: Int!
-    NodeJs: Int!
-    AngularJs: Int!
-    ReactJs: Int!
+    Javascript: Int
+    NodeJs: Int
+    AngularJs: Int
+    ReactJs: Int
 }
 
 input PersonalInformationInput {
@@ -174,8 +174,8 @@ input PersonalInformationInput {
 
 input InformationInput {
     userId: ID!
-    applicantType: String!
-    yearsOfExperience: Int!
+    applicantType: String
+    yearsOfExperience: Int
     currentCTC: Int
     expectedCTC: Int
     noticePeriod: Int
