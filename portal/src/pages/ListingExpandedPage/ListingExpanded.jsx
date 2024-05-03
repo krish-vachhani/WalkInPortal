@@ -1,5 +1,5 @@
 import './ListingExpanded.css';
-import {useParams} from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import React from "react";
@@ -11,6 +11,7 @@ import {APPLY_FOR_JOB, LOGIN_USER} from "../../gqlOperations/mutations.js";
 
 function ListingExpanded() {
     const {id} = useParams();
+    const navigate = useNavigate();
     const [applyForTheListing] = useMutation(APPLY_FOR_JOB, {
         onCompleted: (result) => {
             alert("Successfully Applied");
@@ -38,7 +39,7 @@ function ListingExpanded() {
             .of(Yup.string().required("Select at least one role"))
             .min(1, "Select at least one role"),
     });
-
+    
 
     const formik = useFormik({
         initialValues: {
@@ -48,7 +49,6 @@ function ListingExpanded() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(values.selectedRoles)
             applyForTheListing({
                 variables: {
                     "input": {
@@ -62,8 +62,10 @@ function ListingExpanded() {
                             "roles": values.selectedRoles.join(",").toString()
                         }
                     }
-                },
-            }).then(r => console.log("Mutation completed"));
+                },  
+            }).then(() => {
+                navigate(`success`)
+            });
         },
     });
 
@@ -302,12 +304,12 @@ function ListingExpanded() {
                                 )}
                             </div>
                         </div>
-                        <hr className="listingExpanded-separator"/>
-                        <div className="upload-resume-div">
+                        {/* <hr className="listingExpanded-separator"/> */}
+                        {/* <div className="upload-resume-div">
                             <img src="/public/resources/Upload_black_24dp.svg" alt=""
                                  className="upload-resume-div-img"/>
                             <label className="upload-resume-div-label">Upload Updated Resume</label>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="RoleDescriptionComponent--div">
                         {data.jobPosting.subOpening[0].jobrole.map((role) => {

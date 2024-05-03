@@ -1,12 +1,17 @@
 import React from "react";
 import './SuccessPage.css';
 import MainHeader from "../../components/MainHeaderComponent/MainHeader.jsx";
-
+import {GET_SINGLE_LISTING} from "../../gqlOperations/queries.js";
+import {useQuery} from "@apollo/client";
+import { useParams} from "react-router-dom";
 function SuccessPage() {
+    const {id} = useParams();
+    const {loading, error, data} = useQuery(GET_SINGLE_LISTING, {
+        variables: {jobPostingId: id}
+    });
     return (
         <div>
             <MainHeader/>
-
             <div className="success-mainDiv">
                 <div className="success-tick-circle-div">
                     <img src="/public/resources/check_black_24dp.svg" className="success-tick-img" alt=""/>
@@ -19,7 +24,7 @@ function SuccessPage() {
                 <hr className="success-separator"/>
                 <div className="success-dateTimeDiv">
                     <label className="success-dateTime-title">Date & Time of Walk-In :</label>
-                    <label className="success-dateAndTime-label">03rd July 2021</label>
+                    <label className="success-dateAndTime-label">{data.jobPosting.startDate}</label>
                     <label className="success-dateAndTime-label">9:00 AM to 11:00 AM</label>
                 </div>
                 <hr className="success-separator"/>
@@ -41,10 +46,10 @@ function SuccessPage() {
                         with
                         you during your Walk-In.</label>
                 </div>
-                <hr className="success-separator"/>
-                <div className="success-downloadHallTicket-div">
+                {/* <hr className="success-separator"/> */}
+                {/* <div className="success-downloadHallTicket-div">
                     <button className="success-downloadHallTicket-button">DOWNLOAD HALL TICKET</button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

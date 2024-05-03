@@ -80,19 +80,7 @@ function LoginCard() {
                 ) : null}
 
                 <label className="forgotText">FORGOT PASSWORD?</label>
-                <div className="rememberMe">
-                    <input
-                        type="checkbox"
-                        id="checkBox"
-                        name="rememberMe"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        checked={formik.values.rememberMe}
-                    />
-                    <label className="checkbox--label" htmlFor="checkBox">
-                        Remember me
-                    </label>
-                </div>
+
 
                 <button className="loginButton" type="submit">
                     LOG IN

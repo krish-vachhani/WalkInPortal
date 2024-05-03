@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["LoginFooter.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA;;;AAGF;EACE;EACA;EACA;EACA;;;AAIF;EACE;IACE","file":"LoginFooter.css"}
+{"version":3,"sources":["LoginFooter.scss","LoginFooter.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,uBAAA;EACA,kBAAA;EACA,gBAAA;ACCF;;ADEA;EACE,iBAAA;EACA,cAAA;EACA,oBAAA;EACA,oCAAA;ACCF;;ADEA;EACE,cAAA;EACA,kDAAA;ACCF;;ADEA;EACE,iBAAA;EACA,cAAA;EACA,iBAAA;EACA,oCAAA;ACCF;;ADGA;EACE;IACE,kBAAA;ECAF;AACF","file":"LoginFooter.css"}

@@ -25,7 +25,7 @@ const qualificationDetailSchema = Yup.object().shape({
     percentage: Yup.string().required("Percentage is required"),
     location: Yup.string().required("Loaction is required"),
     otherCollege: Yup.string(),
-    isAppearedTest: Yup.string().required("Test Appeared is required"),
+    isAppearedTest: Yup.string(),
     expertOther: Yup.string(),
     familiarOther: Yup.string(),
     applyRole: Yup.string(),
@@ -65,10 +65,11 @@ const qualificationDetailSchema = Yup.object().shape({
 });
 
 export default function Register() {
-
+    const navigate = useNavigate();
     const [registerUser] = useMutation(CREATE_USER, {
-        onCompleted: (result) => {
+        onCompleted: (result,) => {
             alert("Successfully Created Account");
+            navigate('/login');
         },
         onError: (error) => {
             if (error.graphQLErrors.length > 0) {
@@ -85,7 +86,7 @@ export default function Register() {
         },
     })
     const {id} = useParams();
-    const navigate = useNavigate();
+    
 
 
     const goLogin = () => {
@@ -185,7 +186,6 @@ export default function Register() {
             personalDetailSchema
                 .validate(formData, {abortEarly: false})
                 .then(() => {
-                    alert(JSON.stringify(formData, null, 2));
                     setPage((currPage) => currPage + 1);
                 })
                 .catch((validationErrors) => {
@@ -195,7 +195,6 @@ export default function Register() {
             qualificationDetailSchema
                 .validate(formData, {abortEarly: false})
                 .then(() => {
-                    alert(JSON.stringify(formData, null, 2));
                     setPage((currPage) => currPage + 1);
                 })
                 .catch((validationErrors) => {
@@ -214,6 +213,9 @@ export default function Register() {
         }
     };
 
+    const goBack = () => {
+        navigate(-1); 
+    };
     return (
         <>
             <MainHeader/>
@@ -221,7 +223,7 @@ export default function Register() {
             <div className={style.registerNavbar}>
                 <div className={style.navbarItems}>
                     <div className={style.backImg}>
-                        <img src={arrow} alt=""/>
+                        <img src={arrow} alt="" onClick={goBack}/>
                     </div>
                     <div className={style.title}>
                         <p>Create An Account</p>

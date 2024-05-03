@@ -74,20 +74,6 @@ export default function Personaldetail({formData, setformData}) {
                                     />
                                 </div>
                             </div>
-                            <div className={style.resumeUpload}>
-                                {/* <button>UPLOAD UPDATED RESUME</button> */}
-                                <label className={style.custom}>
-                                    <div className={style.image}>
-                                        <img
-                                            src="https://t4.ftcdn.net/jpg/01/64/16/59/360_F_164165971_ELxPPwdwHYEhg4vZ3F4Ej7OmZVzqq4Ov.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <input type="file" name="resumeFile" onChange={handleData}/>
-                                    UPLOAD RESUME
-                                </label>
-                                <p>{formData.resumeFile}</p>
-                            </div>
                             <div className={style.inp}>
                                 <p>Enter Portfolio URL (if any)</p>
                                 <input
@@ -142,40 +128,7 @@ export default function Personaldetail({formData, setformData}) {
                                     &nbsp;Software Quality Engineer
                                 </div>
                             </div>
-                            <div className={style.inp}>
-                                <p>
-                                    If You Are Registering Via A Referral, Please Mention Full
-                                    Name Of The Employee Who Referred You
-                                </p>
-                                <input
-                                    type="text"
-                                    name="referralName"
-                                    value={formData.referralName}
-                                    onChange={handleData}
-                                />
-                            </div>
-                            <div className={style.checkBox}>
-                                <input
-                                    type="checkbox"
-                                    name="jobUpdate"
-                                    value="yes"
-                                    checked={formData.jobUpdate === "yes"}
-                                    onChange={handleData}
-                                />
-                                &nbsp;Send me job related updates via mail
-                            </div>
-                        </div>
-                        <div className={style.imageDetails}>
-                            <div className={style.personalImg}>
-                                <img
-                                    src="https://cdn.icon-icons.com/icons2/3250/PNG/512/person_circle_filled_icon_202012.png"
-                                    alt=""
-                                />
-                            </div>
-                            <div className={style.updateImg}>
-                                <button>UPLOAD DISPLAY PICTURE</button>
-                                <p>Max. image size: 5 MB</p>
-                            </div>
+                            
                         </div>
                     </div>
                 </form>

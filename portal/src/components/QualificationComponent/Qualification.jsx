@@ -129,18 +129,7 @@ export default function Qualification({ formData, setformData }) {
                                     </select>
                                 </div>
                             </div>
-                            <div className={`${style.gridDiv} ${style.Other}`}>
-                                <p>If others, please enter your college name</p>
-                                <div className={style.eduInfo}>
-                                    <input
-                                        type="text"
-                                        placeholder=""
-                                        name="otherCollege"
-                                        value={formData.otherCollege}
-                                        onChange={handleData}
-                                    />
-                                </div>
-                            </div>
+
                         </div>
                         <div className={style.inpLast}>
                             <p>Where is your college located?*</p>
@@ -300,15 +289,7 @@ export default function Qualification({ formData, setformData }) {
                                             &nbsp;Others
                                         </div>
                                     </div>
-                                    <p className={style.other}>If others, please mention</p>
-                                    <div className={style.technology}>
-                                        <input
-                                            type="text"
-                                            value={formData.expertOther}
-                                            name="expertOther"
-                                            onChange={handleData}
-                                        />
-                                    </div>
+                                
                                 </div>
                             </>
                         ) : (
@@ -374,28 +355,6 @@ export default function Qualification({ formData, setformData }) {
                                     />
                                     &nbsp;Node JS
                                 </div>
-                                <div className={style.cheboxes}>
-                                    <input
-                                        type="checkbox"
-                                        name="familiarTechnology"
-                                        value="Others"
-                                        checked={
-                                            formData.familiarTechnology.filter((e) => e === "Others")
-                                                .length === 1
-                                        }
-                                        onChange={handleData}
-                                    />
-                                    &nbsp;Others
-                                </div>
-                            </div>
-                            <p className={style.other}>If others, please mention</p>
-                            <div className={style.technology}>
-                                <input
-                                    type="text"
-                                    value={formData.familiarOther}
-                                    name="familiarOther"
-                                    onChange={handleData}
-                                />
                             </div>
                         </div>
 
@@ -460,29 +419,6 @@ export default function Qualification({ formData, setformData }) {
                         )}
 
                         <div className={style.testDetail}>
-                            <div className={style.isTest}>
-                                <p>
-                                    Have You Appeared For Any Test By Zeus in the past 12 months?*
-                                </p>
-                                <div className={style.profQualificationDetailRadio}>
-                                    <input
-                                        type="radio"
-                                        value="Yes"
-                                        name="isAppearedTest"
-                                        checked={formData.isAppearedTest === "Yes"}
-                                        onChange={handleData}
-                                    />
-                                    &nbsp;&nbsp;Yes
-                                    <input
-                                        type="radio"
-                                        value="No"
-                                        name="isAppearedTest"
-                                        checked={formData.isAppearedTest === "No"}
-                                        onChange={handleData}
-                                    />
-                                    &nbsp;&nbsp;No
-                                </div>
-                            </div>
 
                             {formData.isAppearedTest === "Yes" ? (
                                 <div className={style.inpLast}>

@@ -38,16 +38,6 @@ export default function App({ formData, setformData }) {
                                 </div>
                             </div>
                         </div>
-                        <div className={style.resumeUpload}>
-                            <div className={style.image}>
-                                <img
-                                    src="https://t4.ftcdn.net/jpg/01/64/16/59/360_F_164165971_ELxPPwdwHYEhg4vZ3F4Ej7OmZVzqq4Ov.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <button>UPLOAD RESUME</button>
-                            <div className={style.resumeDetail}>{formData.resumeFile}</div>
-                        </div>
                         <div className={style.inp}>
                             <p>Enter Portfolio URL (if any)</p>
                             <div className={style.personalDetail}>
@@ -59,27 +49,6 @@ export default function App({ formData, setformData }) {
                             {formData.jobRoleRes.map((item, index) => (
                                 <div className={style.preferredJobRoleDetail}>{item}</div>
                             ))}
-                        </div>
-                        <div className={style.inp}>
-                            <p>
-                                If You Are Registering Via A Referral, Please Mention Full Name
-                                Of The Employee Who Referred You
-                            </p>
-                            <div className={style.personalDetail}>
-                                {formData.referralName ? formData.referralName : "-"}
-                            </div>
-                        </div>
-                        <div className={style.checkBox}>
-                            <input type="checkbox" checked={formData.jobUpdate === "yes"} />
-                            Send me job related updates via mail
-                        </div>
-                    </div>
-                    <div className={style.imageDetails}>
-                        <div className={style.personalImg}>
-                            <img
-                                src="https://t3.ftcdn.net/jpg/01/86/34/08/360_F_186340800_qlgVLkKLVy19r6SEL7RnniP1Yz6dmq8T.jpg"
-                                alt=""
-                            />
                         </div>
                     </div>
                 </div>
@@ -122,12 +91,6 @@ export default function App({ formData, setformData }) {
                             <div className={style.gridDiv}>
                                 <p>College</p>
                                 <div className={style.eduInfo}>{formData.college}</div>
-                            </div>
-                            <div className={style.gridDiv}>
-                                <p>If others, please enter your college name</p>
-                                <div className={style.eduInfo}>
-                                    {formData.otherCollege ? formData.otherCollege : "-"}
-                                </div>
                             </div>
                         </div>
 
@@ -246,28 +209,6 @@ export default function App({ formData, setformData }) {
                         ) : (
                             ""
                         )}
-
-                        <div className={style.testDetail}>
-                            <div className={style.isTest}>
-                                <p>
-                                    Have You Appeared For Any Test By Zeus in the past 12 months?
-                                </p>
-                                <div className={style.profQualificationDetail}>
-                                    {formData.isAppearedTest}
-                                </div>
-                            </div>
-
-                            {formData.isAppearedTest === "Yes" ? (
-                                <div className={style.inpLast}>
-                                    <p>If Yes, which role did you apply for?</p>
-                                    <div className={style.profQualificationDetail}>
-                                        {formData.applyRole}
-                                    </div>
-                                </div>
-                            ) : (
-                                ""
-                            )}
-                        </div>
                     </div>
                 </div>
             </div>
